@@ -54,6 +54,9 @@ main {
   padding: 9rem 1rem;
 }
 
+#wrapper, img{
+  width:100%;
+}
 .container {
   max-width: var(--container-max-width);
   margin: auto;
