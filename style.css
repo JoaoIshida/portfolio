@@ -43,6 +43,7 @@ body {
   font-weight: 500;
   background-color: var(--color-neutral-white);
   color: var(--color-neutral-black);
+  overflow-x: hidden; 
 }
 
 main {
@@ -56,6 +57,7 @@ main {
 
 #wrapper, img{
   width:100%;
+  align-items: center;
 }
 .container {
   max-width: var(--container-max-width);
