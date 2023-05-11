@@ -55,10 +55,6 @@ main {
   padding: 9rem 1rem;
 }
 
-#wrapper, img{
-  width:100%;
-  align-items: center;
-}
 .container {
   max-width: var(--container-max-width);
   margin: auto;
@@ -283,6 +279,11 @@ header.header nav ul li a.btn {
 @media only screen and (min-width: 768px) {
   #about.content-container {
     flex-direction: row;
+  }
+
+  #profile{
+    width: 30%; 
+    height:30%;
   }
 }
 
