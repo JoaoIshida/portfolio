@@ -144,9 +144,10 @@ a button {
   align-items: center;
   gap: 0.5rem;
   transition: transform 0.25s;
-  transform: translatex(-1em);
 }
-
+.inline {
+  display: inline-flex;
+}
 .btn:hover {
   text-decoration: none;
   transform: translateY(-0.2em);
