@@ -145,6 +145,7 @@ a button {
   gap: 0.5rem;
   transition: transform 0.25s;
 }
+
 .inline {
   display: inline-flex;
 }
@@ -199,6 +200,7 @@ header.header {
 
 .header--name {
   color: var(--color-primary-6);
+  padding-left: 0.5rem;
 }
 
 header.header nav {
