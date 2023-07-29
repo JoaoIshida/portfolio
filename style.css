@@ -322,6 +322,11 @@ header.header nav ul li a.btn {
   border-radius: 4rem;
 }
 
+#profile{
+  width: 70%; 
+  height: 70%;
+}
+
 @media only screen and (min-width: 768px) {
   #about.content-container {
     flex-direction: row;
@@ -329,7 +334,7 @@ header.header nav ul li a.btn {
 
   #profile{
     width: 30%; 
-    height:30%;
+    height: 30%;
   }
 }
 
@@ -359,11 +364,22 @@ header.header nav ul li a.btn {
   gap: 0.5rem;
 }
 
+#hangman {
+  border-radius: 25px;
+  height:80%;
+  width:80%;
+}
+
 @media only screen and (min-width: 768px) {
   .project--item {
     flex-direction: row;
     align-items: center;
     gap: 4rem;
+  }
+  #hangman {
+    border-radius: 25px;
+    height:400px;
+    width:600px;
   }
 }
 
