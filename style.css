@@ -290,15 +290,16 @@ header.header nav ul li a.btn {
 /* ----------------------------------------- About Start */
 
 #about.content-container {
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 .about--content {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 .about--content > div {
@@ -309,6 +310,8 @@ header.header nav ul li a.btn {
 
 .about--content--skills {
   display: flex;
+  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
 }
 
