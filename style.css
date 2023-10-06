@@ -310,8 +310,7 @@ header.header nav ul li a.btn {
 
 .about--content--skills {
   display: flex;
-  flex-direction: column;
-  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -319,7 +318,7 @@ header.header nav ul li a.btn {
   display: flex;
   height: 2.5rem;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 0.5rem;
   border: 1px solid var(--color-neutral-0);
   align-items: center;
   border-radius: 4rem;
