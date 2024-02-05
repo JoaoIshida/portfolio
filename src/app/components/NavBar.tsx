@@ -34,7 +34,7 @@ export default function Navbar() {
       {/* Right section */}
       <div className="flex w-fit flex-row p-0 gap-[0.25rem] rounded border border-black dark:border-white">
         <a
-          href="/cv (1).pdf"
+          href="/CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:bg-slate-400 dark:hover:bg-slate-600 p-2 flex items-center nav-link"
@@ -42,7 +42,7 @@ export default function Navbar() {
           View Resume
         </a>
         <a
-          href="/cv (1).pdf"
+          href="/CV.pdf"
           download="JoaoCorreaResume.pdf"
           className="p-2 hover:bg-slate-400 dark:hover:bg-slate-600 flex items-center nav-link"
         >

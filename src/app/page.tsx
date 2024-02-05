@@ -20,6 +20,7 @@ const Home = () => {
         <div className=" flex flex-row gap-4">
           <a
             href="https://github.com/joaoishida"
+            target="_blank"
             className="hover:-translate-y-1 rounded-full bg-lightDark dark:bg-darkLight flex flex-row items-center p-2 gap-[0.5rem]"
           >
             <RiGithubFill />
@@ -27,6 +28,7 @@ const Home = () => {
           </a>
           <a
             href="https://www.linkedin.com/in/joaoishida"
+            target="_blank"
             className="hover:-translate-y-1 rounded-full bg-lightDark dark:bg-darkLight flex flex-row items-center p-2 gap-[0.5rem]"
           >
             <RiLinkedinBoxFill />
@@ -34,6 +36,7 @@ const Home = () => {
           </a>
           <a
             href="mailto:jvi2@sfu.ca"
+            target="_blank"
             className="hover:-translate-y-1 rounded-full bg-lightDark dark:bg-darkLight flex flex-row items-center p-2 gap-[0.5rem]"
           >
             <RiMailFill />
@@ -226,6 +229,7 @@ const Home = () => {
         </p>
         <a
           href="mailto:jvi2@sfu.ca"
+          target="_blank"
           className="w-fit border dark:text-light text-dark bg-zinc-500 border-black dark:border-light rounded-full p-2 hover:bg-zinc-300 dark:hover:bg-zinc-800"
         >
           Say Hello!
