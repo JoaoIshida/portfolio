@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { RiGithubFill, RiLinkedinBoxFill, RiMailFill } from "react-icons/ri";
-import ThemeSwitch from "./components/ThemeSwitch";
+import Skills from "./components/Skills";
+import TextChange from "./components/TextChange";
 
 const Home = () => {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-4 max-w-screen-lg mx-[1rem] md:mx-auto md:gap-[3rem]">
       <div id="intro" className="flex flex-col gap-[2rem]">
         <div className="flex flex-col gap-[2rem]">
-          <div className="text-2xl text-blue-6s00">Hello world! My name is</div>
-          <div className="text-5xl font-bold">Joao Correa</div>
+          <div className="text-2xl text-blue-6s00">Hello world!</div>
+          <TextChange />
           <div className="text-3xl text-zinc-400">
             <span className="text-dark dark:text-light">
               Majoring in Computer Science
@@ -17,36 +17,11 @@ const Home = () => {
             In the process of being a better programmer.
           </div>
         </div>
-        <div className=" flex flex-row gap-4">
-          <a
-            href="https://github.com/joaoishida"
-            target="_blank"
-            className="hover:-translate-y-1 rounded-full bg-lightDark dark:bg-darkLight flex flex-row items-center p-2 gap-[0.5rem]"
-          >
-            <RiGithubFill />
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/joaoishida"
-            target="_blank"
-            className="hover:-translate-y-1 rounded-full bg-lightDark dark:bg-darkLight flex flex-row items-center p-2 gap-[0.5rem]"
-          >
-            <RiLinkedinBoxFill />
-            LinkedIn
-          </a>
-          <a
-            href="mailto:jvi2@sfu.ca"
-            target="_blank"
-            className="hover:-translate-y-1 rounded-full bg-lightDark dark:bg-darkLight flex flex-row items-center p-2 gap-[0.5rem]"
-          >
-            <RiMailFill />
-            Email
-          </a>
-        </div>
+
+        <div id="about"></div>
       </div>
-      <div id="about"></div>
-      <div className="flex flex-col md:flex-row gap-4 items-center justify-center mt-[1.5rem]">
-        <div className="mr-[2rem] flex flex-col gap-2">
+      <div className="flex flex-col md:flex-row gap-4 justify-around items-start mt-[1.5rem]">
+        <div className="mr-[3rem] flex flex-col gap-2">
           <div className="text-4xl font-bold border-b-2 border-zinc-400">
             About Me
           </div>
@@ -62,56 +37,10 @@ const Home = () => {
             of the world.
           </div>
           <div className="py-2 flex flex-row gap-4 items-center">
-            <div className="text-xl font-bold">Languages:</div>
-            <div className="py-2 flex flex-wrap gap-4">
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                HTML
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                C++
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                C
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                SQL
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Java
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Pyth
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                CSS
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                JS
-              </div>
-            </div>
-          </div>
-          <div className="py-2 flex flex-row gap-4 items-center">
-            <div className="text-xl font-bold">Technical:</div>
-            <div className="py-2 flex flex-wrap gap-4">
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Debugging
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Teamwork
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Git/GitHub
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Test Development
-              </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Self-Learn
-              </div>
-            </div>
+            <Skills />
           </div>
           <div className=" py-2 flex flex-row gap-4 items-center">
-            <div className="text-xl font-bold">Fluency:</div>
+            <div className="text-xl font-bold">Languages:</div>
             <div className="py-2 flex flex-wrap gap-4">
               <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
                 English
@@ -125,7 +54,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="translate-y-[-4rem] rounded scale-75 md:scale-150 ">
+        <div className="relative md:sticky md:top-[12rem] rounded scale-75 md:scale-150 md:mt-[6rem]">
           <img
             src="/image.png"
             alt="Joao Correa's profile image"
@@ -213,7 +142,7 @@ const Home = () => {
         </div>
       </div>
       <section
-        className="content-container bg-lightLight dark:bg-darkLight p-[2rem] inline-flex flex-col gap-2"
+        className="content-container bg-lightLight dark:bg-darkLight p-[2rem] mt-[2rem] inline-flex flex-col gap-2"
         id="contact"
       >
         <h2 className="text-2xl md:text-3xl lg:text-4xl border-b-2 border-zinc-400">
