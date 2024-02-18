@@ -1,39 +1,38 @@
 "use client";
 import React from "react";
-import Typical from "react-typical";
+import Typed from "typed.js";
+import { useRef, useEffect } from "react";
 
 const TextChange: React.FC = () => {
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const options = {
+        strings: [
+          "Joao Correa",
+          "a Software Engineer",
+          "a Problem Solver",
+          "a Fast-learner",
+          "Creative",
+        ],
+        typeSpeed: 50,
+        backSpeed: 50,
+        loop: true,
+      };
+      const typed = new Typed(textRef.current, options);
+
+      return () => {
+        typed.destroy();
+      };
+    }
+  }, []);
+
   return (
     <div className="flex flex-row text-5xl">
       <div className="flex flex-row">
         I am{" "}
-        <span className="font-bold px-3">
-          <Typical
-            steps={[
-              "Joao Correa",
-              2000,
-              "a Software Engineer",
-              2000,
-              "a Problem Solver",
-              2000,
-              "Fast-learner",
-              2000,
-              "Creative",
-              2000,
-            ]}
-            wrapper="p"
-            loop={Infinity}
-            className="text-blue-600"
-            options={{
-              cursor: false,
-              delay: 2000, // Decreased typing speed
-              typist: {
-                blink: true,
-                blinkSpeed: 1000,
-              },
-            }}
-          />
-        </span>
+        <span className="font-bold px-3 text-blue-600" ref={textRef}></span>
       </div>
     </div>
   );
