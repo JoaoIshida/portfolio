@@ -29,10 +29,9 @@ const TextChange: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-row text-5xl">
-      <div className="flex flex-row">
-        I am{" "}
-        <span className="font-bold px-3 text-blue-600" ref={textRef}></span>
+    <div className="">
+      <div className="wrapper text-5xl">
+        I am <span className="font-bold text-blue-600" ref={textRef}></span>
       </div>
     </div>
   );
