@@ -5,56 +5,64 @@ import TextChange from "./components/TextChange";
 const Home = () => {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-4 max-w-screen-lg mx-[1rem] md:mx-auto md:gap-[3rem]">
-      <div id="intro" className="flex flex-col gap-[2rem]">
-        <div className="flex flex-col gap-[2rem]">
-          <div className="text-2xl text-blue-6s00">Hello world!</div>
-          <TextChange />
-          <div className="text-3xl text-zinc-400">
-            <span className="text-dark dark:text-light">
-              Majoring in Computer Science
-            </span>
-            . A driven individual interested in building high-quality products.
-            In the process of being a better programmer.
-          </div>
-        </div>
-
-        <div id="about"></div>
-      </div>
       <div className="flex flex-col md:flex-row gap-4 justify-around items-start mt-[1.5rem]">
-        <div className="mr-[3rem] flex flex-col gap-2">
-          <div className="text-4xl font-bold border-b-2 border-zinc-400">
-            About Me
-          </div>
-          <div className="text-2xl">
-            Hey there, my name is Joao Correa and I am a computer science
-            student at Simon Fraser University. I have always been interested in
-            discovering new technologies and I find great joy in exploring it.
-            My main interest is to make something cool and useful. It is amazing
-            how a few lines of code can result in something creative and
-            innovative like this website. I also consider myself a lifelong
-            learner and a creative person. Ultimately, my goal is to use my
-            skills to make a positive change and contribute to the improvement
-            of the world.
-          </div>
-          <div className="py-2 flex flex-row gap-4 items-center">
-            <Skills />
-          </div>
-          <div className=" py-2 flex flex-row gap-4 items-center">
-            <div className="text-xl font-bold">Languages:</div>
-            <div className="py-2 flex flex-wrap gap-4">
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                English
+        <div>
+          <div id="intro" className="flex flex-col gap-[2rem]">
+            <div className="flex flex-col gap-[2rem]">
+              <div className="text-2xl">Hello world!</div>
+              <div className="relative">
+                <div className="absolute inset-0">
+                  <TextChange />
+                </div>
               </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Portuguese
+              <div className="text-3xl text-zinc-400 mt-[5rem] pr-[2rem]">
+                <span className="text-dark dark:text-light">
+                  Majoring in Computer Science
+                </span>
+                . A driven individual interested in building high-quality
+                products. In the process of being a better programmer.
               </div>
-              <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
-                Spanish
+            </div>
+
+            <div id="about"></div>
+          </div>
+          <div className="flex flex-col md:flex-row gap-4 justify-around items-start mt-[1.5rem]">
+            <div className="mr-[3rem] flex flex-col gap-2">
+              <div className="text-4xl font-bold border-b-2 border-zinc-400">
+                About Me
+              </div>
+              <div className="text-2xl">
+                Hey there, my name is Joao Correa and I am a computer science
+                student at Simon Fraser University. I have always been
+                interested in discovering new technologies and I find great joy
+                in exploring it. My main interest is to make something cool and
+                useful. It is amazing how a few lines of code can result in
+                something creative and innovative like this website. I also
+                consider myself a lifelong learner and a creative person.
+                Ultimately, my goal is to use my skills to make a positive
+                change and contribute to the improvement of the world.
+              </div>
+              <div className="py-2 flex flex-row gap-4 items-center">
+                <Skills />
+              </div>
+              <div className=" py-2 flex flex-row gap-4 items-center">
+                <div className="text-xl font-bold">Languages:</div>
+                <div className="py-2 flex flex-wrap gap-4">
+                  <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
+                    English
+                  </div>
+                  <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
+                    Portuguese
+                  </div>
+                  <div className="px-[1rem] py-[0.25rem] rounded-full border border-opacity-50 border-black dark:border-white">
+                    Spanish
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="relative md:sticky md:top-[12rem] rounded scale-75 md:scale-150 md:mt-[6rem]">
+        <div className="relative md:sticky md:top-[12rem] rounded scale-75 md:scale-150 md:mt-[2rem]">
           <img
             src="/image.png"
             alt="Joao Correa's profile image"

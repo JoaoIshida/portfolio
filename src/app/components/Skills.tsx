@@ -21,7 +21,7 @@ const Skills = () => {
               title="C"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a
@@ -35,7 +35,7 @@ const Skills = () => {
               title="C++"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a
@@ -49,7 +49,7 @@ const Skills = () => {
               title="C#"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://www.java.com" target="_blank" rel="noreferrer">
@@ -59,7 +59,7 @@ const Skills = () => {
               title="Java"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a
@@ -73,7 +73,7 @@ const Skills = () => {
               title="JavaScript"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://www.python.org" target="_blank" rel="noreferrer">
@@ -83,7 +83,7 @@ const Skills = () => {
               title="Python"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a
@@ -97,7 +97,7 @@ const Skills = () => {
               title="TypeScript"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
@@ -117,7 +117,7 @@ const Skills = () => {
               title="CSS"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
@@ -127,7 +127,7 @@ const Skills = () => {
               title="HTML5"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
@@ -137,7 +137,7 @@ const Skills = () => {
               title="React.js"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
@@ -147,7 +147,7 @@ const Skills = () => {
               title="Tailwind CSS"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
@@ -163,7 +163,7 @@ const Skills = () => {
               title="Node.js"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
@@ -179,7 +179,7 @@ const Skills = () => {
               title="Pandas"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
@@ -195,7 +195,7 @@ const Skills = () => {
               title="MongoDB"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a
@@ -209,7 +209,7 @@ const Skills = () => {
               title="Microsoft SQL Server"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer">
@@ -219,7 +219,7 @@ const Skills = () => {
               title="SQLite"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
@@ -235,7 +235,7 @@ const Skills = () => {
               title="Figma"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
@@ -245,7 +245,7 @@ const Skills = () => {
               title="Git"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://www.linux.org/" target="_blank" rel="noreferrer">
@@ -255,7 +255,7 @@ const Skills = () => {
               title="Linux"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
           <a href="https://www.mathworks.com/" target="_blank" rel="noreferrer">
@@ -265,7 +265,7 @@ const Skills = () => {
               title="MATLAB"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
@@ -281,7 +281,7 @@ const Skills = () => {
               title="Next.js"
               width={40}
               height={40}
-              className="dark:bg-white  bg-opacity-30%"
+              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
@@ -289,7 +289,7 @@ const Skills = () => {
       <div>
         <h3 className="mb-[0.5rem]">Game Engines</h3>
 
-        <div className="flex flex-row">
+        <div className="flex flex-row relative">
           <a href="https://unity.com/" target="_blank" rel="noreferrer">
             <Image
               src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg"
@@ -297,7 +297,7 @@ const Skills = () => {
               title="Unity"
               width={40}
               height={40}
-              className="dark:bg-white bg-opacity-[30%]"
+              className="filter dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
             />
           </a>
         </div>
