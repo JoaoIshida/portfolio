@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-/* ───────── types ───────── */
 type Status = "finished" | "in-progress" | "paused" | "planned";
 
 type Repo = {
