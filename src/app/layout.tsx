@@ -22,10 +22,8 @@ export default function RootLayout({
         <Providers>
           <div className="bg-light text-dark dark:bg-dark dark:text-light">
             <NavBar />
-            <div className="sticky w-fit rounded-full border p-2 shadow-sm shadow-black dark:shadow-white cursor-pointer scale-110 hover:scale-125 top-[10rem] left-[87%] md:left-[94%]">
               <ThemeSwitch />
-            </div>
-            <main className="pt-[8rem]">{children}</main>
+            <main className="pt-[6rem]">{children}</main>
           </div>
         </Providers>
       </body>

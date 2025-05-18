@@ -1,309 +1,310 @@
 import React from "react";
 import Image from "next/image";
 
-const Skills = () => {
-  return (
-    <div className="grid grid-cols-2 flex-wrap space-x-4 gap-x-[4rem] text-2xl">
-      <h2 className="text-3xl font-bold">Skills:</h2>
-      <div />
-      <div>
-        <h3 className="mb-[0.5rem]">Programming Languages</h3>
-
-        <div className="flex flex-row">
-          <a
-            href="https://www.cprogramming.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg"
-              alt="c"
-              title="C"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a
-            href="https://www.w3schools.com/cpp/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg"
-              alt="cplusplus"
-              title="C++"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a
-            href="https://www.w3schools.com/cs/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg"
-              alt="csharp"
-              title="C#"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://www.java.com" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
-              alt="java"
-              title="Java"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
-              alt="javascript"
-              title="JavaScript"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://www.python.org" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
-              alt="python"
-              title="Python"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a
-            href="https://www.typescriptlang.org/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
-              alt="typescript"
-              title="TypeScript"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 className="mb-[0.5rem]">Frontend Development</h3>
-
-        <div className="flex flex-row">
-          <a
-            href="https://www.w3schools.com/css/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
-              alt="css3"
-              title="CSS"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg"
-              alt="html5"
-              title="HTML5"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg"
-              alt="react"
-              title="React.js"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
-              alt="tailwind"
-              title="Tailwind CSS"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 className="mb-[0.5rem]">Backend Development</h3>
-
-        <div className="flex flex-row">
-          <a href="https://nodejs.org" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
-              alt="nodejs"
-              title="Node.js"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 className="mb-[0.5rem]">AI/ML</h3>
-
-        <div className="flex flex-row">
-          <a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/pandas/pandas-original.svg"
-              alt="pandas"
-              title="Pandas"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 className="mb-[0.5rem]">Database</h3>
-
-        <div className="flex flex-row">
-          <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
-              alt="mongodb"
-              title="MongoDB"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a
-            href="https://www.microsoft.com/en-us/sql-server"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Image
-              src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"
-              alt="mssql"
-              title="Microsoft SQL Server"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg"
-              alt="sqlite"
-              title="SQLite"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 className="mb-[0.5rem]">Software</h3>
-
-        <div className="flex flex-row">
-          <a href="https://www.figma.com/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg"
-              alt="figma"
-              title="Figma"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg"
-              alt="git"
-              title="Git"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://www.linux.org/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg"
-              alt="linux"
-              title="Linux"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-          <a href="https://www.mathworks.com/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://www.svgrepo.com/show/373830/matlab.svg"
-              alt="matlab"
-              title="MATLAB"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 className="mb-[0.5rem]">Static Site Generators</h3>
-
-        <div className="flex flex-row">
-          <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://cdn.worldvectorlogo.com/logos/next-js.svg"
-              alt="nextjs"
-              title="Next.js"
-              width={40}
-              height={40}
-              className="filter drop-shadow-[0px_0px_1px_rgba(0,0,0,0)] dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 className="mb-[0.5rem]">Game Engines</h3>
-
-        <div className="flex flex-row relative">
-          <a href="https://unity.com/" target="_blank" rel="noreferrer">
-            <Image
-              src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg"
-              alt="unity"
-              title="Unity"
-              width={40}
-              height={40}
-              className="filter dark:drop-shadow-[0px_0px_1px_rgba(200,200,200,1)]"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+type SkillItem = {
+  light: string; // icon for light mode (white background)
+  dark: string;  // icon for dark mode  (dark background)
+  alt: string;
+  href: string;
 };
 
-export default Skills;
+type SkillGroup = {
+  title: string;
+  items: SkillItem[];
+};
+
+function SkillIcon({ light, dark, alt, href }: SkillItem) {
+  return (
+    <a href={href} target="_blank" rel="noreferrer" className="shadow hover:opacity-90">
+      <picture>
+        <source srcSet={dark} media="(prefers-color-scheme: dark)" />
+        <img src={light} alt={alt} title={alt} width={40} height={40} />
+      </picture>
+    </a>
+  );
+}
+
+const icon = (id: string, theme: "light" | "dark") =>
+  `https://skillicons.dev/icons?i=${id}&theme=${theme}`;
+
+const skills: SkillGroup[] = [
+  {
+    title: "Programming Languages",
+    items: [
+      {
+        light: icon("java", "light"),
+        dark: icon("java", "dark"),
+        alt: "Java",
+        href: "https://www.java.com/",
+      },
+      {
+        light: icon("c", "light"),
+        dark: icon("c", "dark"),
+        alt: "C",
+        href: "https://en.wikipedia.org/wiki/C_(programming_language)",
+      },
+      {
+        light: icon("cpp", "light"),
+        dark: icon("cpp", "dark"),
+        alt: "C++",
+        href: "https://isocpp.org/",
+      },
+      {
+        light: icon("python", "light"),
+        dark: icon("python", "dark"),
+        alt: "Python",
+        href: "https://www.python.org/",
+      },
+      {
+        light: icon("kotlin", "light"),
+        dark: icon("kotlin", "dark"),
+        alt: "Kotlin",
+        href: "https://kotlinlang.org/",
+      },
+      {
+        light: icon("javascript", "light"),
+        dark: icon("javascript", "dark"),
+        alt: "JavaScript",
+        href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      },
+      {
+        light: icon("typescript", "light"),
+        dark: icon("typescript", "dark"),
+        alt: "TypeScript",
+        href: "https://www.typescriptlang.org/",
+      },
+      {
+        light: icon("postgres", "light"),
+        dark: icon("postgres", "dark"),
+        alt: "SQL (PostgreSQL)",
+        href: "https://www.postgresql.org/",
+      },
+      {
+        light: icon("mongodb", "light"),
+        dark: icon("mongodb", "dark"),
+        alt: "NoSQL (MongoDB)",
+        href: "https://www.mongodb.com/",
+      },
+      {
+        light: icon("css", "light"),
+        dark: icon("css", "dark"),
+        alt: "CSS",
+        href: "https://www.w3.org/Style/CSS/",
+      },
+      {
+        light: icon("html", "light"),
+        dark: icon("html", "dark"),
+        alt: "HTML",
+        href: "https://html.spec.whatwg.org/",
+      },
+      {
+        light: icon("r", "light"),
+        dark: icon("r", "dark"),
+        alt: "R",
+        href: "https://www.r-project.org/",
+      },
+    ],
+  },
+  {
+    title: "Frontend Frameworks",
+    items: [
+      {
+        light: icon("react", "light"),
+        dark: icon("react", "dark"),
+        alt: "React",
+        href: "https://reactjs.org/",
+      },
+      {
+        light: icon("nextjs", "light"),
+        dark: icon("nextjs", "dark"),
+        alt: "Next.js",
+        href: "https://nextjs.org/",
+      },
+      {
+        light: icon("tailwind", "light"),
+        dark: icon("tailwind", "dark"),
+        alt: "Tailwind CSS",
+        href: "https://tailwindcss.com/",
+      }, 
+      {
+        light: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC97Z8BResg5dlPqczsRCFhP6zewWX0X0e7fVPG-G7PuUZwwZVsi9OPoqJYkgqT2h0FI95SsmWzVEgpt8b8HAqFiIxZ98TFtY4lE0b8UrtVJ2HrJebRwl6C9DslsQDl9KnBIrdHS6LtkY/s1600/jetpack+compose+icon_RGB.png",
+        dark: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC97Z8BResg5dlPqczsRCFhP6zewWX0X0e7fVPG-G7PuUZwwZVsi9OPoqJYkgqT2h0FI95SsmWzVEgpt8b8HAqFiIxZ98TFtY4lE0b8UrtVJ2HrJebRwl6C9DslsQDl9KnBIrdHS6LtkY/s1600/jetpack+compose+icon_RGB.png",
+        alt: "Jetpack Compose",
+        href: "https://developer.android.com/jetpack/compose",
+      },
+    ],
+  },
+  {
+    title: "Backend & APIs",
+    items: [
+      {
+        light: icon("nodejs", "light"),
+        dark: icon("nodejs", "dark"),
+        alt: "Node.js",
+        href: "https://nodejs.org/",
+      },
+      {
+        light: icon("django", "light"),
+        dark: icon("django", "dark"),
+        alt: "Django",
+        href: "https://www.djangoproject.com/",
+      },
+      {
+        light: icon("supabase", "light"),
+        dark: icon("supabase", "dark"),
+        alt: "Supabase",
+        href: "https://supabase.com/",
+      },
+      {
+        light: "https://cdn-lfs.hf.co/repos/96/a2/96a2c8468c1546e660ac2609e49404b8588fcf5a748761fa72c154b2836b4c83/942cad1ccda905ac5a659dfd2d78b344fccfb84a8a3ac3721e08f488205638a0?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27hf-logo.svg%3B+filename%3D%22hf-logo.svg%22%3B&response-content-type=image%2Fsvg%2Bxml&Expires=1747554128&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0NzU1NDEyOH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy5oZi5jby9yZXBvcy85Ni9hMi85NmEyYzg0NjhjMTU0NmU2NjBhYzI2MDllNDk0MDRiODU4OGZjZjVhNzQ4NzYxZmE3MmMxNTRiMjgzNmI0YzgzLzk0MmNhZDFjY2RhOTA1YWM1YTY1OWRmZDJkNzhiMzQ0ZmNjZmI4NGE4YTNhYzM3MjFlMDhmNDg4MjA1NjM4YTA%7EcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj0qJnJlc3BvbnNlLWNvbnRlbnQtdHlwZT0qIn1dfQ__&Signature=intGiF11EAGXxpD8WGJdS7wskdeQOfGmGj4W93Wqw13BWL2sX4pBG%7E-U0j72534f8HBmTwl2EodFu1FOWhTnmqD-5Z6RS-U6gJs%7EilC31gh29JBxXlH%7Edsp0a2t8am%7E5wBpQAhalW7Aq6ZOHpQAJOUZnbONKtU-kYfx1mgmoSdZsem8NKTba7Sr8rG%7EZYwWTqW%7EmyISsV-2WlecbMZ-4xqA06xoVeZZOjsh-PML7lAlXO-XuCu1bAaBD0ban9fdlJlSgzucVvBaHBYOI96Bp-GubxZns-CdVaCa3v-GqAPVglnX1IUD220STqA9pcyGRqp5XnLZ3LJxZWEDLK%7EVcRg__&Key-Pair-Id=K3RPWS32NSSJCE",
+        dark: "https://cdn-lfs.hf.co/repos/96/a2/96a2c8468c1546e660ac2609e49404b8588fcf5a748761fa72c154b2836b4c83/942cad1ccda905ac5a659dfd2d78b344fccfb84a8a3ac3721e08f488205638a0?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27hf-logo.svg%3B+filename%3D%22hf-logo.svg%22%3B&response-content-type=image%2Fsvg%2Bxml&Expires=1747554128&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0NzU1NDEyOH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy5oZi5jby9yZXBvcy85Ni9hMi85NmEyYzg0NjhjMTU0NmU2NjBhYzI2MDllNDk0MDRiODU4OGZjZjVhNzQ4NzYxZmE3MmMxNTRiMjgzNmI0YzgzLzk0MmNhZDFjY2RhOTA1YWM1YTY1OWRmZDJkNzhiMzQ0ZmNjZmI4NGE4YTNhYzM3MjFlMDhmNDg4MjA1NjM4YTA%7EcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj0qJnJlc3BvbnNlLWNvbnRlbnQtdHlwZT0qIn1dfQ__&Signature=intGiF11EAGXxpD8WGJdS7wskdeQOfGmGj4W93Wqw13BWL2sX4pBG%7E-U0j72534f8HBmTwl2EodFu1FOWhTnmqD-5Z6RS-U6gJs%7EilC31gh29JBxXlH%7Edsp0a2t8am%7E5wBpQAhalW7Aq6ZOHpQAJOUZnbONKtU-kYfx1mgmoSdZsem8NKTba7Sr8rG%7EZYwWTqW%7EmyISsV-2WlecbMZ-4xqA06xoVeZZOjsh-PML7lAlXO-XuCu1bAaBD0ban9fdlJlSgzucVvBaHBYOI96Bp-GubxZns-CdVaCa3v-GqAPVglnX1IUD220STqA9pcyGRqp5XnLZ3LJxZWEDLK%7EVcRg__&Key-Pair-Id=K3RPWS32NSSJCE",
+        alt: "Hugging Face",
+        href: "https://huggingface.co/",
+      },
+      {
+        light: "https://media.licdn.com/dms/image/v2/D5612AQE0nEZrPGv0JA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1679583758253?e=2147483647&v=beta&t=4QpsM1YKchLOfxVzpfFJAQWdkJ3vg3aKUWYL5tFVXXI",
+        dark: "https://media.licdn.com/dms/image/v2/D5612AQE0nEZrPGv0JA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1679583758253?e=2147483647&v=beta&t=4QpsM1YKchLOfxVzpfFJAQWdkJ3vg3aKUWYL5tFVXXI",
+        alt: "REST API",
+        href: "https://blog.postman.com/rest-api-examples/",
+      },
+      {
+        light: icon("npm", "light"),
+        dark: icon("npm", "dark"),
+        alt: "NPM",
+        href: "https://www.npmjs.com/",
+      },
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    items: [
+      {
+        light: icon("docker", "light"),
+        dark: icon("docker", "dark"),
+        alt: "Docker",
+        href: "https://www.docker.com/",
+      },
+      {
+        light: icon("git", "light"),
+        dark: icon("git", "dark"),
+        alt: "Git",
+        href: "https://git-scm.com/",
+      },
+      {
+        light: icon("github", "light"),
+        dark: icon("github", "dark"),
+        alt: "GitHub",
+        href: "https://github.com/",
+      },
+      {
+        light: icon("vercel", "light"),
+        dark: icon("vercel", "dark"),
+        alt: "Vercel",
+        href: "https://vercel.com/",
+      },
+      {
+        light: icon("azure", "light"),
+        dark: icon("azure", "dark"),
+        alt: "Azure",
+        href: "https://azure.microsoft.com/",
+      },
+      {
+        light: icon("linux", "light"),
+        dark: icon("linux", "dark"),
+        alt: "Linux",
+        href: "https://www.kernel.org/",
+      },
+      {
+        light: "https://raw.githubusercontent.com/Whinarn/vscode-python-auto-venv/master/images/logo.png",
+        dark: "https://raw.githubusercontent.com/Whinarn/vscode-python-auto-venv/master/images/logo.png",
+        alt: "Python venv",
+        href: "https://docs.python.org/3/library/venv.html",
+      },
+    ],
+  },
+  {
+    title: "Databases & Data",
+    items: [
+      {
+        light: icon("mongodb", "light"),
+        dark: icon("mongodb", "dark"),
+        alt: "MongoDB",
+        href: "https://www.mongodb.com/",
+      },
+      {
+        light: icon("postgres", "light"),
+        dark: icon("postgres", "dark"),
+        alt: "PostgreSQL",
+        href: "https://www.postgresql.org/",
+      },
+      {
+        light: "https://static-00.iconduck.com/assets.00/file-type-numpy-icon-950x1024-yxmpudmi.png",
+        dark: "https://static-00.iconduck.com/assets.00/file-type-numpy-icon-950x1024-yxmpudmi.png",
+        alt: "NumPy",
+        href: "https://numpy.org/",
+      },
+      {
+        light: "https://static-00.iconduck.com/assets.00/jupyter-icon-1748x2048-tdovt1s4.png",
+        dark: "https://static-00.iconduck.com/assets.00/jupyter-icon-1748x2048-tdovt1s4.png",
+        alt: "Jupyter",
+        href: "https://jupyter.org/",
+      },
+    ],
+  },
+  {
+    title: "Tools & IDEs",
+    items: [
+      {
+        light: icon("postman", "light"),
+        dark: icon("postman", "dark"),
+        alt: "Postman",
+        href: "https://www.postman.com/",
+      },
+      {
+        light: icon("codepen", "light"),
+        dark: icon("codepen", "dark"),
+        alt: "CodePen",
+        href: "https://codepen.io/",
+      },
+      {
+        light: icon("pycharm", "light"),
+        dark: icon("pycharm", "dark"),
+        alt: "PyCharm",
+        href: "https://www.jetbrains.com/pycharm/",
+      },
+      {
+        light: icon("figma", "light"),
+        dark: icon("figma", "dark"),
+        alt: "Figma",
+        href: "https://www.figma.com/",
+      },
+      {
+        light: icon("androidstudio", "light"),
+        dark: icon("androidstudio", "dark"),
+        alt: "Android Studio",
+        href: "https://developer.android.com/studio",
+      },
+    ],
+  },
+];
+
+export default function Skills() {
+  return (
+    <section className="grid grid-cols-2 gap-x-16 gap-y-8 text-2xl">
+      <h2 className="col-span-2 text-3xl font-bold">Skills</h2>
+
+      {skills.map(({ title, items }) => (
+        <div key={title}>
+          <h3 className="mb-2 font-semibold text-base dark:text-gray-300">
+            {title}
+          </h3>
+          <div className="flex flex-wrap items-center gap-[0.5rem]">
+            {items.map((item) => (
+              <SkillIcon key={item.alt} {...item} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
