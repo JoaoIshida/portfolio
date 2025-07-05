@@ -19,7 +19,7 @@ export default function ThemeSwitch() {
     <button
       onClick={toggle}
       aria-label="Toggle light/dark theme"
-      className="sticky top-[10rem] left-[87%] md:left-[94%]
+      className="sticky top-[7rem] left-[87%] md:left-[94%]
                  z-50 w-11 h-11 rounded-full border p-2
                  shadow-sm shadow-black dark:shadow-white
                  bg-light text-dark dark:bg-dark dark:text-light

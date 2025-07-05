@@ -15,10 +15,21 @@ type SkillGroup = {
 
 function SkillIcon({ light, dark, alt, href }: SkillItem) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="shadow hover:opacity-90">
-      <picture>
+    <a 
+      href={href} 
+      target="_blank" 
+      rel="noreferrer" 
+      className="group flex relative w-16 h-16 items-center justify-center rounded-xl bg-white dark:bg-darkLight shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 hover:scale-105 overflow-hidden"
+      title={alt}
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+      <picture className="relative z-10">
         <source srcSet={dark} media="(prefers-color-scheme: dark)" />
-        <img src={light} alt={alt} title={alt} width={40} height={40} />
+        <img 
+          src={light} 
+          alt={alt} 
+          className="w-10 h-10 group-hover:scale-110 transition-transform duration-300 relative z-10" 
+        />
       </picture>
     </a>
   );
@@ -156,8 +167,8 @@ const skills: SkillGroup[] = [
         href: "https://supabase.com/",
       },
       {
-        light: "https://cdn-lfs.hf.co/repos/96/a2/96a2c8468c1546e660ac2609e49404b8588fcf5a748761fa72c154b2836b4c83/942cad1ccda905ac5a659dfd2d78b344fccfb84a8a3ac3721e08f488205638a0?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27hf-logo.svg%3B+filename%3D%22hf-logo.svg%22%3B&response-content-type=image%2Fsvg%2Bxml&Expires=1747554128&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0NzU1NDEyOH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy5oZi5jby9yZXBvcy85Ni9hMi85NmEyYzg0NjhjMTU0NmU2NjBhYzI2MDllNDk0MDRiODU4OGZjZjVhNzQ4NzYxZmE3MmMxNTRiMjgzNmI0YzgzLzk0MmNhZDFjY2RhOTA1YWM1YTY1OWRmZDJkNzhiMzQ0ZmNjZmI4NGE4YTNhYzM3MjFlMDhmNDg4MjA1NjM4YTA%7EcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj0qJnJlc3BvbnNlLWNvbnRlbnQtdHlwZT0qIn1dfQ__&Signature=intGiF11EAGXxpD8WGJdS7wskdeQOfGmGj4W93Wqw13BWL2sX4pBG%7E-U0j72534f8HBmTwl2EodFu1FOWhTnmqD-5Z6RS-U6gJs%7EilC31gh29JBxXlH%7Edsp0a2t8am%7E5wBpQAhalW7Aq6ZOHpQAJOUZnbONKtU-kYfx1mgmoSdZsem8NKTba7Sr8rG%7EZYwWTqW%7EmyISsV-2WlecbMZ-4xqA06xoVeZZOjsh-PML7lAlXO-XuCu1bAaBD0ban9fdlJlSgzucVvBaHBYOI96Bp-GubxZns-CdVaCa3v-GqAPVglnX1IUD220STqA9pcyGRqp5XnLZ3LJxZWEDLK%7EVcRg__&Key-Pair-Id=K3RPWS32NSSJCE",
-        dark: "https://cdn-lfs.hf.co/repos/96/a2/96a2c8468c1546e660ac2609e49404b8588fcf5a748761fa72c154b2836b4c83/942cad1ccda905ac5a659dfd2d78b344fccfb84a8a3ac3721e08f488205638a0?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27hf-logo.svg%3B+filename%3D%22hf-logo.svg%22%3B&response-content-type=image%2Fsvg%2Bxml&Expires=1747554128&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0NzU1NDEyOH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy5oZi5jby9yZXBvcy85Ni9hMi85NmEyYzg0NjhjMTU0NmU2NjBhYzI2MDllNDk0MDRiODU4OGZjZjVhNzQ4NzYxZmE3MmMxNTRiMjgzNmI0YzgzLzk0MmNhZDFjY2RhOTA1YWM1YTY1OWRmZDJkNzhiMzQ0ZmNjZmI4NGE4YTNhYzM3MjFlMDhmNDg4MjA1NjM4YTA%7EcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj0qJnJlc3BvbnNlLWNvbnRlbnQtdHlwZT0qIn1dfQ__&Signature=intGiF11EAGXxpD8WGJdS7wskdeQOfGmGj4W93Wqw13BWL2sX4pBG%7E-U0j72534f8HBmTwl2EodFu1FOWhTnmqD-5Z6RS-U6gJs%7EilC31gh29JBxXlH%7Edsp0a2t8am%7E5wBpQAhalW7Aq6ZOHpQAJOUZnbONKtU-kYfx1mgmoSdZsem8NKTba7Sr8rG%7EZYwWTqW%7EmyISsV-2WlecbMZ-4xqA06xoVeZZOjsh-PML7lAlXO-XuCu1bAaBD0ban9fdlJlSgzucVvBaHBYOI96Bp-GubxZns-CdVaCa3v-GqAPVglnX1IUD220STqA9pcyGRqp5XnLZ3LJxZWEDLK%7EVcRg__&Key-Pair-Id=K3RPWS32NSSJCE",
+        light: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+        dark: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
         alt: "Hugging Face",
         href: "https://huggingface.co/",
       },
@@ -172,6 +183,12 @@ const skills: SkillGroup[] = [
         dark: icon("npm", "dark"),
         alt: "NPM",
         href: "https://www.npmjs.com/",
+      },
+      {
+        light: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSReHvByZkJhXRzuDuLPfYtmdNlOk6JsTRn1w&s",
+        dark: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSReHvByZkJhXRzuDuLPfYtmdNlOk6JsTRn1w&s",
+        alt: "Sanity CMS",
+        href: "https://www.sanity.io/",
       },
     ],
   },
@@ -238,14 +255,14 @@ const skills: SkillGroup[] = [
         href: "https://www.postgresql.org/",
       },
       {
-        light: "https://static-00.iconduck.com/assets.00/file-type-numpy-icon-950x1024-yxmpudmi.png",
-        dark: "https://static-00.iconduck.com/assets.00/file-type-numpy-icon-950x1024-yxmpudmi.png",
+        light: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
+        dark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
         alt: "NumPy",
         href: "https://numpy.org/",
       },
       {
-        light: "https://static-00.iconduck.com/assets.00/jupyter-icon-1748x2048-tdovt1s4.png",
-        dark: "https://static-00.iconduck.com/assets.00/jupyter-icon-1748x2048-tdovt1s4.png",
+        light: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg",
+        dark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg",
         alt: "Jupyter",
         href: "https://jupyter.org/",
       },
@@ -290,21 +307,55 @@ const skills: SkillGroup[] = [
 
 export default function Skills() {
   return (
-    <section className="grid grid-cols-2 gap-x-16 gap-y-8 text-2xl">
-      <h2 className="col-span-2 text-3xl font-bold">Skills</h2>
-
-      {skills.map(({ title, items }) => (
-        <div key={title}>
-          <h3 className="mb-2 font-semibold text-base dark:text-gray-300">
-            {title}
-          </h3>
-          <div className="flex flex-wrap items-center gap-[0.5rem]">
-            {items.map((item) => (
-              <SkillIcon key={item.alt} {...item} />
+    <div className="space-y-8">
+      {skills.map(({ title, items }, groupIndex) => (
+        <div 
+          key={title} 
+          className={`fade-in-up stagger-${Math.min(groupIndex + 1, 5)}`}
+          style={{animationDelay: `${groupIndex * 0.1}s`}}
+        >
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-2">
+              <span className="text-primary-500">
+                {getSkillGroupIcon(title)}
+              </span>
+              {title}
+            </h3>
+            <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
+            {items.map((item, itemIndex) => (
+              <div
+                key={item.alt}
+                className={`fade-in-up stagger-${Math.min(itemIndex % 5 + 1, 5)}`}
+                style={{animationDelay: `${(groupIndex * 0.1) + (itemIndex * 0.05)}s`}}
+              >
+                <SkillIcon {...item} />
+              </div>
             ))}
           </div>
         </div>
       ))}
-    </section>
+    </div>
   );
+}
+
+function getSkillGroupIcon(title: string): string {
+  switch (title) {
+    case "Programming Languages":
+      return "💻";
+    case "Frontend Frameworks":
+      return "🎨";
+    case "Backend & APIs":
+      return "⚙️";
+    case "DevOps & Cloud":
+      return "☁️";
+    case "Databases & Data":
+      return "🗄️";
+    case "Tools & IDEs":
+      return "🔧";
+    default:
+      return "🚀";
+  }
 }
