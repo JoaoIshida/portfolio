@@ -23,7 +23,7 @@ export default function RootLayout({
           <div className="bg-light text-dark dark:bg-dark dark:text-light">
             <NavBar />
               <ThemeSwitch />
-            <main className="pt-[6rem]">{children}</main>
+            <main className="pt-[4rem]">{children}</main>
           </div>
         </Providers>
       </body>
