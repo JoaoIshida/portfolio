@@ -37,7 +37,7 @@ const EXPERIENCES: Experience[] = [
       "Optimized responsive UI and conducted user research for better UX across devices"
     ],
     companyWebsite: "https://sfusurge.com/",
-    employmentType: "Full Time Co-op"
+    employmentType: "Part-Time"
   },
   {
     id: "proa",
@@ -56,7 +56,7 @@ const EXPERIENCES: Experience[] = [
       "Increased conversational accuracy by 12% through rigorous QA testing and debugging strategies"
     ],
     companyWebsite: "https://proa.ai",
-    employmentType: "Full Time Co-op"
+    employmentType: "Full-Time Co-op"
   },
   {
     id: "providence",
@@ -75,7 +75,7 @@ const EXPERIENCES: Experience[] = [
       "Enhanced project delivery by implementing Waterfall SDLC, conducting weekly client meetings and user research"
     ],
     companyWebsite: "https://www.providencehealthcare.org",
-    employmentType: "Full Time Co-op"
+    employmentType: "Full-Time Contract"
   },
   {
     id: "uscanstartup",
@@ -95,7 +95,7 @@ const EXPERIENCES: Experience[] = [
       "Oversaw development of multiple incubator initiatives with focus on modern web technologies and scalable solutions"
     ],
     companyWebsite: "https://www.uscanstartup.com",
-    employmentType: "Full Time"
+    employmentType: "Full-Time"
   }
 ];
 
