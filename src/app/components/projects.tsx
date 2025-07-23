@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { SkeletonProjects } from "./LoadingSkeleton";
-
-type Status = "finished" | "in-progress" | "paused" | "planned";
+import { PROJECT_OVERRIDES, ProjectOverride, Status } from "../data/projectOverrides";
 
 type Repo = {
   id: number;
@@ -31,29 +30,6 @@ const STATUS_KEYWORDS: Status[] = [
   "planned",
 ];
 
-/* Any per-repo tweaks go here (image, live-site URL, …) */
-const OVERRIDES: Record<
-  string,
-  | {
-      img?: string;
-      website?: string;
-      description?: string;
-      hide?: boolean;
-      status?: Status;
-    }
-  | undefined
-> = {
-  Blokus_game: {
-    img: "/blokus.png",
-    website: "https://joaoishida.github.io/Blokus_game/",
-    // no status override → will fall back to topic, if present
-  },
-  hangmangame: {
-    img: "/hangman.png",
-    //no website override → will fall back to repo website, if present
-  },
-};
-
 export default function GithubRepos({
   username = "joaoishida",
   max = 15,
@@ -65,6 +41,8 @@ export default function GithubRepos({
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  const viewMoreRef = useRef<HTMLButtonElement | null>(null);
+  const [pendingScroll, setPendingScroll] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -111,6 +89,19 @@ export default function GithubRepos({
     load();
   }, [username, max]);
 
+  useEffect(() => {
+    if (pendingScroll && viewMoreRef.current) {
+      const rect = viewMoreRef.current.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      // Scroll so the button is 100px below the top of the viewport
+      window.scrollTo({
+        top: rect.top + scrollTop - 480,
+        behavior: 'smooth',
+      });
+      setPendingScroll(false);
+    }
+  }, [pendingScroll]);
+
   if (loading) {
     return <SkeletonProjects count={6} />;
   }
@@ -123,15 +114,27 @@ export default function GithubRepos({
     );
   }
 
-  const allVisible = repos.map((repo) => {
-    const o = OVERRIDES[repo.name] ?? {};
-
+  const allVisible = [
+    // Add custom projects that are not in GitHub
+    ...Object.entries(PROJECT_OVERRIDES)
+      .filter(([name, override]) => !repos.some(repo => repo.name === name))
+      .map(([name, override]) => ({
+        id: `custom-${name}`,
+        name,
+        description: override.description ?? null,
+        html_url: override.website ?? "#",
+        homepage: override.website,
+        topics: [],
+        status: override.status,
+        o: override,
+      })),
+    // Add GitHub projects, applying overrides if present
+    ...repos.map((repo) => {
+      const o = PROJECT_OVERRIDES[repo.name] ?? {};
     const topicStatus = repo.topics?.find((t) =>
-      STATUS_KEYWORDS.includes(t as Status)
+        ["finished", "in-progress", "paused", "planned"].includes(t as Status)
     ) as Status | undefined;
-
     const status = o.status ?? topicStatus;
-
     return {
       ...repo,
       ...o,
@@ -139,8 +142,8 @@ export default function GithubRepos({
       status,
       o,
     };
-  })
-  .filter((r) => !r.topics?.includes("hide"));
+    }).filter((r) => !r.topics?.includes("hide")),
+  ];
 
   // Determine how many projects to show
   const getProjectLimit = () => {
@@ -154,18 +157,6 @@ export default function GithubRepos({
 
   return (
     <div>
-      {/* Legend */}
-      <div className="card p-4 mb-8 fade-in-up">
-        <div className="flex flex-wrap justify-center gap-6">
-          {STATUS_KEYWORDS.map((s) => (
-            <div key={s} className="flex items-center gap-2 text-sm font-medium">
-              <span className="text-lg">{STATUS_ICON[s]}</span>
-              <span className="capitalize text-gray-600 dark:text-gray-300">{s.replace('-', ' ')}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Repo Cards */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((repo, index) => (
@@ -191,7 +182,7 @@ export default function GithubRepos({
               )}
             </div>
 
-            {/* Project Image */}
+            {/* Project Image/Video */}
             {repo.o?.img && (
               <div className="relative mb-4 overflow-hidden rounded-lg">
                 <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
@@ -202,6 +193,24 @@ export default function GithubRepos({
                     alt={`${repo.name} preview`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                </div>
+              </div>
+            )}
+            
+            {repo.o?.video && (
+              <div className="relative mb-4 overflow-hidden rounded-lg">
+                <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
+                  <video
+                    src={repo.o.video}
+                    controls
+                    muted
+                    controlsList="nodownload noremoteplayback noplaybackrate nofullscreen"
+                    disablePictureInPicture
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    poster="/video-poster.jpg"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             )}
@@ -232,6 +241,7 @@ export default function GithubRepos({
 
             {/* Action Buttons */}
             <div className="mt-auto flex gap-3">
+              {repo.html_url && repo.html_url !== "#" && !repo.o?.hideCode && (
               <a
                 href={repo.html_url}
                 target="_blank"
@@ -240,13 +250,14 @@ export default function GithubRepos({
               >
                 <span className="group-hover/btn:text-white transition-colors">View Code</span>
               </a>
+              )}
 
               {repo.homepage && (
                 <a
                   href={repo.homepage}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 btn-primary text-sm py-2 px-4 text-center hover:shadow-medium transition-all duration-200"
+                  className={`${repo.html_url && repo.html_url !== "#" && !repo.o?.hideCode ? "flex-1" : "w-full"} btn-primary text-sm py-2 px-4 text-center hover:shadow-medium transition-all duration-200`}
                 >
                   Live Demo
                 </a>
@@ -260,8 +271,9 @@ export default function GithubRepos({
       {hasMore && (
         <div className="text-center mt-8 fade-in-up">
           <button
+            ref={viewMoreRef}
             onClick={() => setShowAll(true)}
-            className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold transition-all duration-300 ease-out bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+            className="view-more group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold transition-all duration-300 ease-out bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
           >
             <span className="relative z-10">View More Projects</span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
@@ -275,15 +287,7 @@ export default function GithubRepos({
           <button
             onClick={() => {
               setShowAll(false);
-              // Scroll to the end of visible projects
-              const projectsSection = document.getElementById('projects');
-              if (projectsSection) {
-                const visibleProjects = projectsSection.querySelectorAll('.project-card');
-                if (visibleProjects.length > 0) {
-                  const lastVisibleProject = visibleProjects[visibleProjects.length - 1];
-                  lastVisibleProject.scrollIntoView({ behavior: 'smooth', block: 'end' });
-                }
-              }
+              setPendingScroll(true);
             }}
             className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold transition-all duration-300 ease-out bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
           >

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Skills from "./components/Skills";
 import TextChange from "./components/TextChange";
 import GithubRepos from "./components/projects";
+import Experience from "./components/experience";
 import ContactForm from "./components/ContactForm";
 
 const Home = () => {
@@ -130,10 +131,22 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section 
+        id="experience" 
+        className="section relative bg-gradient-to-br from-light to-lightLight dark:from-dark dark:to-darkDark scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-24 z-10"
+      >
+        <div className="section-container">
+          <h2 className="section-title mb-4">Work Experience</h2>
+          <p className="section-subtitle">My professional journey and key achievements</p>
+          <Experience />
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section 
         id="projects" 
-        className="section relative bg-gradient-to-br from-light to-lightLight dark:from-dark dark:to-darkDark scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-24 z-10"
+        className="section relative bg-gradient-to-br from-lightLight to-light dark:from-darkDark dark:to-dark scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-24 z-10"
       >
         <div className="section-container">
           <h2 className="section-title mb-4">Latest Projects</h2>
