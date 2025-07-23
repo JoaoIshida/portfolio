@@ -68,11 +68,11 @@
   /* Card Components */
   .card {
     @apply bg-white dark:bg-darkLight rounded-xl shadow-soft border border-gray-200 dark:border-gray-700;
-    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+    @apply transition-all duration-300 hover:shadow-medium;
   }
   
   .card-interactive {
-    @apply card cursor-pointer hover:shadow-hard hover:scale-105;
+    @apply card cursor-pointer hover:shadow-hard;
   }
   
   .card-gradient {

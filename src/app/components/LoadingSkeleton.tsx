@@ -132,4 +132,38 @@ export const SkeletonNavigation: React.FC = () => {
       </div>
     </nav>
   );
+};
+
+export const SkeletonExperience: React.FC<{ count?: number }> = ({ count = 3 }) => {
+  return (
+    <div className="space-y-8">
+      {Array.from({ length: count }).map((_, i) => (
+        <div key={i} className="card p-6">
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex-1">
+              <Skeleton height="h-6" width="w-1/2" className="mb-2" />
+              <Skeleton height="h-5" width="w-1/3" className="mb-1" />
+              <Skeleton height="h-4" width="w-1/4" />
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {Array.from({ length: 6 }).map((_, j) => (
+              <Skeleton key={j} height="h-6" width="w-16" />
+            ))}
+          </div>
+          <div className="space-y-3">
+            <Skeleton height="h-4" width="w-32" className="mb-3" />
+            <div className="space-y-2">
+              {Array.from({ length: 4 }).map((_, k) => (
+                <div key={k} className="flex items-start gap-2">
+                  <Skeleton height="h-3" width="w-3" className="mt-1 flex-shrink-0" />
+                  <SkeletonText lines={1} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }; 
