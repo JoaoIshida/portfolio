@@ -162,96 +162,116 @@ export default function GithubRepos({
         {visible.map((repo, index) => (
           <div
             key={repo.id}
-            className={`card-interactive group p-6 h-full fade-in-up stagger-${Math.min(index % 6 + 1, 5)}`}
+            className={`card-interactive group p-6 h-full flex flex-col fade-in-up stagger-${Math.min(index % 6 + 1, 5)}`}
             style={{animationDelay: `${index * 0.1}s`}}
           >
-            {/* Header */}
-            <div className="flex items-start justify-between mb-4">
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                {repo.name.replace(/[_-]/g, ' ')}
-              </h3>
-              {repo.status && (
-                <div className="flex items-center gap-1">
-                  <span 
-                    title={repo.status.replace('-', ' ')}
-                    className="text-lg hover:scale-125 transition-transform"
-                  >
-                    {STATUS_ICON[repo.status]}
-                  </span>
+
+            <div className="flex-1 flex flex-col">
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {repo.name.replace(/[_-]/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                </h3>
+                {repo.status && (
+                  <div className="flex items-center gap-1">
+                    <span 
+                      title={repo.status.replace('-', ' ')}
+                      className="text-lg transition-transform"
+                    >
+                      {STATUS_ICON[repo.status]}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Project Image/Video */}
+              {repo.o?.img && (
+                <div className="relative mb-4 overflow-hidden rounded-lg">
+                  <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
+                    <Image
+                      src={repo.o.img}
+                      width={500}
+                      height={300}
+                      alt={`${repo.name} preview`}
+                      className="w-full h-full object-cover transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+              )}
+              
+              {repo.o?.video && (
+                <div className="relative mb-4 overflow-hidden rounded-lg">
+                  <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
+                    <video
+                      src={repo.o.video}
+                      controls
+                      muted
+                      controlsList="nodownload noremoteplayback noplaybackrate nofullscreen"
+                      disablePictureInPicture
+                      className="w-full h-full object-cover transition-transform duration-300"
+                      poster="/video-poster.jpg"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              )}
+              
+              {/* Description */}
+              <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                {repo.description || "No description available"}
+              </p>
+
+              {/* Skills/Tools Tags */}
+              {((repo.topics && repo.topics.length > 0) || (repo.o?.skills && repo.o.skills.length > 0)) && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {/* Merge topics, technologies, and skills, remove duplicates */}
+                  {Array.from(new Set([
+                    ...(repo.topics || []),
+                    ...((repo.o?.skills as string[] | undefined) || []),
+                  ])).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs rounded-full border border-primary-200 dark:border-primary-800"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Topics */}
+              {repo.topics && repo.topics.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {repo.topics.slice(0, 3).map((topic) => (
+                    <span
+                      key={topic}
+                      className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs rounded-full"
+                    >
+                      {topic}
+                    </span>
+                  ))}
+                  {repo.topics.length > 3 && (
+                    <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs rounded-full">
+                      +{repo.topics.length - 3} more
+                    </span>
+                  )}
                 </div>
               )}
             </div>
-
-            {/* Project Image/Video */}
-            {repo.o?.img && (
-              <div className="relative mb-4 overflow-hidden rounded-lg">
-                <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
-                  <Image
-                    src={repo.o.img}
-                    width={500}
-                    height={300}
-                    alt={`${repo.name} preview`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-            )}
-            
-            {repo.o?.video && (
-              <div className="relative mb-4 overflow-hidden rounded-lg">
-                <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
-                  <video
-                    src={repo.o.video}
-                    controls
-                    muted
-                    controlsList="nodownload noremoteplayback noplaybackrate nofullscreen"
-                    disablePictureInPicture
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    poster="/video-poster.jpg"
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div>
-            )}
-
-            {/* Description */}
-            <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed flex-grow">
-              {repo.description || "No description available"}
-            </p>
-
-            {/* Topics */}
-            {repo.topics && repo.topics.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {repo.topics.slice(0, 3).map((topic) => (
-                  <span
-                    key={topic}
-                    className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs rounded-full"
-                  >
-                    {topic}
-                  </span>
-                ))}
-                {repo.topics.length > 3 && (
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs rounded-full">
-                    +{repo.topics.length - 3} more
-                  </span>
-                )}
-              </div>
-            )}
 
             {/* Action Buttons */}
             <div className="mt-auto flex gap-3">
               {repo.html_url && repo.html_url !== "#" && !repo.o?.hideCode && (
               <a
-                href={repo.html_url}
+                href={repo.html_url + '#readme'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 btn-outline text-sm py-2 px-4 text-center hover:shadow-medium transition-all duration-200 group/btn"
               >
-                <span className="group-hover/btn:text-white transition-colors">View Code</span>
+                <span className="group-hover/btn:text-white transition-colors">View More About Project</span>
               </a>
               )}
-
               {repo.homepage && (
                 <a
                   href={repo.homepage}
@@ -261,6 +281,25 @@ export default function GithubRepos({
                 >
                   Live Demo
                 </a>
+              )}
+
+              {/* Custom status messages for specific projects */}
+              {repo.name === "xlens" && (
+                <div className="w-full text-center py-2 px-4 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900 dark:to-orange-900 text-yellow-700 dark:text-yellow-300 text-sm font-medium rounded-lg border border-yellow-200 dark:border-yellow-800">
+                  Coming Soon
+                </div>
+              )}
+
+              {repo.name === "GeoCreate" && (
+                <div className="w-full text-center py-2 px-4 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-600 dark:text-gray-400 text-sm font-medium rounded-lg border border-gray-200 dark:border-gray-600">
+                  Not Available to Public Yet
+                </div>
+              )}
+
+              {repo.name === "NOVA" && (
+                <div className="w-full text-center py-2 px-4 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-600 dark:text-gray-400 text-sm font-medium rounded-lg border border-gray-200 dark:border-gray-600">
+                  Not Available to Public Yet
+                </div>
               )}
             </div>
           </div>

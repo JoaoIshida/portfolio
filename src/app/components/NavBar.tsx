@@ -41,7 +41,7 @@ export default function Navbar() {
               </a>
               
               <div className="hidden lg:flex lg:gap-8 text-lg">
-                {["about", "projects", "contact"].map((id) => (
+                {["about", "experience", "projects", "contact"].map((id) => (
                   <a 
                     key={id} 
                     href={`#${id}`} 
@@ -89,7 +89,7 @@ export default function Navbar() {
           <div className="lg:hidden mt-2 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 fade-in-down">
             <div className="glass backdrop-blur-md rounded-2xl shadow-soft p-4">
               <div className="space-y-2">
-                {["about", "projects", "contact"].map((id) => (
+                {["about", "experience", "projects", "contact"].map((id) => (
                   <a
                     key={id}
                     href={`#${id}`}
