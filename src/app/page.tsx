@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Skills from "./components/Skills";
 import TextChange from "./components/TextChange";
-import GithubRepos from "./components/projects";
+import StaticProjects from "./components/projects";
 import Experience from "./components/experience";
 import ContactForm from "./components/ContactForm";
 
@@ -65,7 +65,7 @@ const Home = () => {
             
             {/* Scroll Indicator */}
             <div className="fade-in-up stagger-4 mt-12">
-              <div className="flex flex-col items-center animate-bounce-subtle">
+              <div className="flex flex-col items-center animate-bounce-subtle hidden md:flex">
                 <span className="text-sm text-gray-500 dark:text-gray-400 mb-2">Scroll to explore</span>
                 <div className="w-6 h-10 border-2 border-gray-300 dark:border-gray-600 rounded-full flex justify-center">
                   <div className="w-1 h-3 bg-gray-400 dark:bg-gray-500 rounded-full mt-2 animate-pulse"></div>
@@ -101,6 +101,20 @@ const Home = () => {
                 </p>
               </div>
               
+              {/* Profile Image - Mobile Only */}
+              <div className="flex-shrink-0 fade-in-left flex flex-wrap justify-center lg:hidden">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+                  <div className="relative bg-white dark:bg-darkLight rounded-2xl p-2 shadow-hard hover-lift">
+                    <img
+                      src="/image.png"
+                      alt="Joao Correa's profile image"
+                      className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-xl"
+                    />
+                  </div>
+                </div>
+              </div>
+              
               {/* Skills */}
               <div className="mb-8">
                 <h3 className="text-2xl font-semibold mb-4 text-gradient">Technical Skills</h3>
@@ -114,8 +128,8 @@ const Home = () => {
               </div>
             </div>
             
-            {/* Profile Image */}
-            <div className="flex-shrink-0 fade-in-left mx-auto">
+            {/* Profile Image - Desktop Only */}
+            <div className="hidden lg:block flex-shrink-0 fade-in-left mx-auto">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
                 <div className="relative bg-white dark:bg-darkLight rounded-2xl p-2 shadow-hard hover-lift">
@@ -151,7 +165,7 @@ const Home = () => {
         <div className="section-container">
           <h2 className="section-title mb-4">Latest Projects</h2>
           <p className="section-subtitle">Check out some of my recent work and contributions</p>
-          <GithubRepos />
+          <StaticProjects />
         </div>
       </section>
 
@@ -164,8 +178,14 @@ const Home = () => {
           <div className="text-center mb-12">
             <h2 className="section-title mb-4">Get in Touch</h2>
             <p className="section-subtitle max-w-3xl mx-auto text-black">
-              I'm currently looking for <span className="font-semibold text-gradient">New Grad</span> opportunities starting September 2025! 
-              I would love to get in contact, whether you have a question or want to know more about me!
+              I'm currently looking for <span className="font-semibold text-gradient">New Grad</span> opportunities starting September 2025!<br/>
+              Feel free to use the form below or email me directly at{' '}
+              <a
+                href="mailto:jvi2@sfu.ca"
+                className="text-primary-700 dark:text-primary-300 hover:underline text-base font-medium"
+              >
+                jvi2@sfu.ca
+              </a>.
             </p>
           </div>
           

@@ -1,18 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useScrollDirection, useScrollProgress } from "../hooks/useScrollAnimation";
+import { useTheme } from "next-themes";
 import {
   RiDownloadLine,
   RiMenuLine,
   RiCloseLine,
   RiGithubFill,
   RiLinkedinBoxFill,
+  RiSunLine,
+  RiMoonLine,
 } from "react-icons/ri";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const scrollDirection = useScrollDirection();
   const scrollProgress = useScrollProgress();
+  const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
 
   return (
     <>
@@ -69,6 +80,21 @@ export default function Navbar() {
                   />
                 </div>
                 
+                {/* Theme Toggle - Desktop Only */}
+                {mounted && (
+                  <button
+                    onClick={toggleTheme}
+                    aria-label="Toggle light/dark theme"
+                    className="hidden lg:flex p-2 rounded-lg hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
+                  >
+                    {resolvedTheme === "dark" ? (
+                      <RiSunLine size={20} />
+                    ) : (
+                      <RiMoonLine size={20} />
+                    )}
+                  </button>
+                )}
+                
                 <div className="hidden md:flex">
                   <ResumeButtons />
                 </div>
@@ -102,6 +128,28 @@ export default function Navbar() {
                 <div className="pt-2 border-t border-gray-200 dark:border-gray-700 md:hidden">
                   <ResumeButtons />
                 </div>
+                
+                {/* Mobile Theme Toggle */}
+                {mounted && (
+                  <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
+                    <button
+                      onClick={toggleTheme}
+                      aria-label="Toggle light/dark theme"
+                      className="flex items-center gap-3 w-full py-3 px-4 rounded-lg text-base hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-200"
+                    >
+                      <span>
+                        {resolvedTheme === "dark" ? (
+                          <RiSunLine size={20} />
+                        ) : (
+                          <RiMoonLine size={20} />
+                        )}
+                      </span>
+                      <span>
+                        {resolvedTheme === "dark" ? "Light Mode" : "Dark Mode"}
+                      </span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

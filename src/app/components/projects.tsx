@@ -1,19 +1,10 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { SkeletonProjects } from "./LoadingSkeleton";
-import { PROJECT_OVERRIDES, ProjectOverride, Status } from "../data/projectOverrides";
+import { STATIC_PROJECTS, StaticProject, Status } from "../data/projectOverrides";
 
-type Repo = {
-  id: number;
-  name: string;
-  description: string | null;
-  html_url: string;
-  homepage?: string;
-  topics?: string[];   // ← filled after the per-repo /topics call
-  status?: Status;     // ← derived from topic or override
-};
+type Repo = StaticProject;
 
 /* ───────── consts ───────── */
 const STATUS_ICON: Record<Status, string> = {
@@ -23,71 +14,10 @@ const STATUS_ICON: Record<Status, string> = {
   planned: "🚧",
 };
 
-const STATUS_KEYWORDS: Status[] = [
-  "finished",
-  "in-progress",
-  "paused",
-  "planned",
-];
-
-export default function GithubRepos({
-  username = "joaoishida",
-  max = 15,
-}: {
-  username?: string;
-  max?: number;
-}) {
-  const [repos, setRepos] = useState<Repo[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+export default function StaticProjects() {
   const [showAll, setShowAll] = useState(false);
   const viewMoreRef = useRef<HTMLButtonElement | null>(null);
   const [pendingScroll, setPendingScroll] = useState(false);
-
-  useEffect(() => {
-    async function load() {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        /* 1️⃣ List repos (most-recent push first) */
-        const listRes = await fetch(
-          `https://api.github.com/users/${username}/repos?per_page=${max}&sort=pushed`
-        );
-        if (!listRes.ok) throw new Error(`GitHub ${listRes.status}`);
-        const list: Repo[] = await listRes.json();
-
-        /* 2️⃣ For each repo, get its topics (1 extra request each) */
-        const withTopics: Repo[] = await Promise.all(
-          list.map(async (repo) => {
-            try {
-              const tRes = await fetch(
-                `https://api.github.com/repos/${username}/${repo.name}/topics`,
-                {
-                  headers: { Accept: "application/vnd.github+json" },
-                }
-              );
-              if (tRes.ok) {
-                const { names } = await tRes.json();
-                repo.topics = names as string[];
-              }
-            } catch {
-              /* ignore topic failures; leave topics undefined */
-            }
-            return repo;
-          })
-        );
-
-        setRepos(withTopics);
-      } catch (e: any) {
-        setError(e.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    load();
-  }, [username, max]);
 
   useEffect(() => {
     if (pendingScroll && viewMoreRef.current) {
@@ -102,48 +32,8 @@ export default function GithubRepos({
     }
   }, [pendingScroll]);
 
-  if (loading) {
-    return <SkeletonProjects count={6} />;
-  }
-
-  if (error) {
-    return (
-      <p className="text-red-600 dark:text-red-400">
-        Couldn’t load repos: {error}
-      </p>
-    );
-  }
-
-  const allVisible = [
-    // Add custom projects that are not in GitHub
-    ...Object.entries(PROJECT_OVERRIDES)
-      .filter(([name, override]) => !repos.some(repo => repo.name === name))
-      .map(([name, override]) => ({
-        id: `custom-${name}`,
-        name,
-        description: override.description ?? null,
-        html_url: override.website ?? "#",
-        homepage: override.website,
-        topics: [],
-        status: override.status,
-        o: override,
-      })),
-    // Add GitHub projects, applying overrides if present
-    ...repos.map((repo) => {
-      const o = PROJECT_OVERRIDES[repo.name] ?? {};
-    const topicStatus = repo.topics?.find((t) =>
-        ["finished", "in-progress", "paused", "planned"].includes(t as Status)
-    ) as Status | undefined;
-    const status = o.status ?? topicStatus;
-    return {
-      ...repo,
-      ...o,
-      homepage: o.website ?? repo.homepage,
-      status,
-      o,
-    };
-    }).filter((r) => !r.topics?.includes("hide")),
-  ];
+  // Use static projects data directly
+  const allVisible = STATIC_PROJECTS;
 
   // Determine how many projects to show
   const getProjectLimit = () => {
@@ -158,7 +48,7 @@ export default function GithubRepos({
   return (
     <div>
       {/* Repo Cards */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((repo, index) => (
           <div
             key={repo.id}
@@ -170,9 +60,9 @@ export default function GithubRepos({
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  {repo.name.replace(/[_-]/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                  {repo.name.replace(/[_-]/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}
                 </h3>
-                {repo.status && (
+                {/* {repo.status && (
                   <div className="flex items-center gap-1">
                     <span 
                       title={repo.status.replace('-', ' ')}
@@ -181,15 +71,15 @@ export default function GithubRepos({
                       {STATUS_ICON[repo.status]}
                     </span>
                   </div>
-                )}
+                )} */}
               </div>
 
               {/* Project Image/Video */}
-              {repo.o?.img && (
+              {repo.img && (
                 <div className="relative mb-4 overflow-hidden rounded-lg">
                   <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
                     <Image
-                      src={repo.o.img}
+                      src={repo.img}
                       width={500}
                       height={300}
                       alt={`${repo.name} preview`}
@@ -199,17 +89,16 @@ export default function GithubRepos({
                 </div>
               )}
               
-              {repo.o?.video && (
+              {repo.video && (
                 <div className="relative mb-4 overflow-hidden rounded-lg">
                   <div className="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900">
                     <video
-                      src={repo.o.video}
+                      src={repo.video}
                       controls
                       muted
                       controlsList="nodownload noremoteplayback noplaybackrate nofullscreen"
                       disablePictureInPicture
                       className="w-full h-full object-cover transition-transform duration-300"
-                      poster="/video-poster.jpg"
                     >
                       Your browser does not support the video tag.
                     </video>
@@ -223,13 +112,9 @@ export default function GithubRepos({
               </p>
 
               {/* Skills/Tools Tags */}
-              {((repo.topics && repo.topics.length > 0) || (repo.o?.skills && repo.o.skills.length > 0)) && (
+              {repo.skills && repo.skills.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {/* Merge topics, technologies, and skills, remove duplicates */}
-                  {Array.from(new Set([
-                    ...(repo.topics || []),
-                    ...((repo.o?.skills as string[] | undefined) || []),
-                  ])).map((tag) => (
+                  {repo.skills.map((tag) => (
                     <span
                       key={tag}
                       className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs rounded-full border border-primary-200 dark:border-primary-800"
@@ -238,31 +123,12 @@ export default function GithubRepos({
                     </span>
                   ))}
                 </div>
-              )}
-
-              {/* Topics */}
-              {repo.topics && repo.topics.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {repo.topics.slice(0, 3).map((topic) => (
-                    <span
-                      key={topic}
-                      className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs rounded-full"
-                    >
-                      {topic}
-                    </span>
-                  ))}
-                  {repo.topics.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 text-xs rounded-full">
-                      +{repo.topics.length - 3} more
-                    </span>
-                  )}
-                </div>
-              )}
+              )}              
             </div>
 
             {/* Action Buttons */}
             <div className="mt-auto flex gap-3">
-              {repo.html_url && repo.html_url !== "#" && !repo.o?.hideCode && (
+              {repo.html_url && repo.html_url !== "#" && !repo.hideCode && (
               <a
                 href={repo.html_url + '#readme'}
                 target="_blank"
@@ -277,14 +143,14 @@ export default function GithubRepos({
                   href={repo.homepage}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${repo.html_url && repo.html_url !== "#" && !repo.o?.hideCode ? "flex-1" : "w-full"} btn-primary text-sm py-2 px-4 text-center hover:shadow-medium transition-all duration-200`}
+                  className={`${repo.html_url && repo.html_url !== "#" && !repo.hideCode ? "flex-1" : "w-full"} btn-primary text-sm py-2 px-4 text-center hover:shadow-medium transition-all duration-200`}
                 >
                   Live Demo
                 </a>
               )}
 
               {/* Custom status messages for specific projects */}
-              {repo.name === "xlens" && (
+              {repo.name === "Xlens" && (
                 <div className="w-full text-center py-2 px-4 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900 dark:to-orange-900 text-yellow-700 dark:text-yellow-300 text-sm font-medium rounded-lg border border-yellow-200 dark:border-yellow-800">
                   Coming Soon
                 </div>
@@ -340,7 +206,7 @@ export default function GithubRepos({
       {showAll && (
         <div className="text-center mt-8 fade-in-up">
           <a
-            href={`https://github.com/${username}?tab=repositories`}
+            href="https://github.com/joaoishida?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-ghost hover-lift px-6 py-3 inline-flex items-center gap-2"
@@ -355,4 +221,3 @@ export default function GithubRepos({
     </div>
   );
 }
-

@@ -1,7 +1,6 @@
 import NavBar from "./components/NavBar";
 import { Providers } from "./providers";
 import "./globals.css";
-import ThemeSwitch from "./components/ThemeSwitch";
 export default function RootLayout({
   children,
 }: {
@@ -22,7 +21,6 @@ export default function RootLayout({
         <Providers>
           <div className="bg-light text-dark dark:bg-dark dark:text-light">
             <NavBar />
-              <ThemeSwitch />
             <main className="pt-[4rem]">{children}</main>
           </div>
         </Providers>
