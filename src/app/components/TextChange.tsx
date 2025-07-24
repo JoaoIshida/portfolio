@@ -11,7 +11,7 @@ const TextChange: React.FC = () => {
       const options = {
         strings: [
           "Joao Correa",
-          "a Software Engineer",
+          "a Developer",
           "a Problem Solver",
           "a Fast-learner",
           "Creative",
@@ -30,7 +30,7 @@ const TextChange: React.FC = () => {
 
   return (
     <div className="">
-      <div className="wrapper text-5xl">
+      <div className="wrapper text-4xl md:text-5xl min-h-[80px] md:min-h-[50px]">
         I am <span className="font-bold text-blue-600" ref={textRef}></span>
       </div>
     </div>

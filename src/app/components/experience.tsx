@@ -121,7 +121,7 @@ export default function Experience() {
       {/* Centered Timeline */}
       <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary-500 via-primary-500 to-secondary-500 hidden lg:block"></div>
       
-      <div className="space-y-12">
+      <div className="space-y-4 md:space-y-12">
         {sortedExperiences.map((exp, index) => {
           // Format date for display dynamically
           const formatDate = (date: Date) => {
@@ -181,9 +181,26 @@ export default function Experience() {
                       const startDate = new Date(exp.startDate);
                       const endDate = exp.endDate === "Present" ? new Date() : new Date(exp.endDate);
                       
-                      const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
-                      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                      const months = Math.floor(diffDays / 30.44);
+                      // Calculate months difference more accurately
+                      const startYear = startDate.getFullYear();
+                      const startMonth = startDate.getMonth();
+                      const endYear = endDate.getFullYear();
+                      const endMonth = endDate.getMonth();
+                      
+                      let months = (endYear - startYear) * 12 + (endMonth - startMonth) + 1;
+                      
+                      // Adjust for partial months
+                      const startDay = startDate.getDate();
+                      const endDay = endDate.getDate();
+                      
+                      // If end day is before start day, subtract one month
+                      if (endDay < startDay) {
+                        months--;
+                      }
+                      
+                      // Ensure minimum of 1 month for any employment
+                      if (months < 1) months = 1;
+                      
                       const years = Math.floor(months / 12);
                       const remainingMonths = months % 12;
                       
@@ -194,9 +211,6 @@ export default function Experience() {
                       if (remainingMonths > 0) {
                         if (durationStr) durationStr += " ";
                         durationStr += `${remainingMonths} mo${remainingMonths > 1 ? "s" : ""}`;
-                      }
-                      if (!durationStr) {
-                        durationStr = `${diffDays} day${diffDays > 1 ? "s" : ""}`;
                       }
                       
                       return (
