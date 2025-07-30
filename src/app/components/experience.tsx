@@ -48,12 +48,12 @@ const EXPERIENCES: Experience[] = [
     duration: "8 months",
     startDate: "2024-05",
     endDate: "2024-12",
-    technologies: ["Node.js", "Express", "MongoDB", "AWS", "OpenAI", "IBM Watson", "NLP", "Microservices"],
+    technologies: ["Python", "SQL", "Data Visualization", "AI Chat Curation", "OpenAI", "IBM Watson", "NLP", "Testing"],
     achievements: [
-      "Reduced deployment time by 62% by implementing automated CI/CD pipelines using GitHub Actions and AWS",
-      "Improved system reliability by 30% by developing comprehensive automated testing suites with 90% code coverage",
-      "Enhanced API performance by 45% through optimization of microservices architecture handling 50K+ daily requests",
-      "Increased conversational accuracy by 12% through rigorous QA testing and debugging strategies"
+      "Built an interactive data dashboard for the clients page, enabling real-time monitoring and visualization of key chatbot performance metrics to support client decision-making",
+      "Leveraged AI to assist with chat curation, analyzing and organizing chatbot interactions to improve the quality and relevance of responses",
+      "Used Python to automate repetitive data processing and reporting tasks, increasing efficiency and reducing manual workload",
+      "Increased user engagement by 30% by conducting A/B testing and statistical analysis, implementing data-driven improvements to chatbot conversation flows"
     ],
     companyWebsite: "https://proa.ai",
     employmentType: "Full-Time Co-op"
@@ -67,12 +67,13 @@ const EXPERIENCES: Experience[] = [
     duration: "4 months",
     startDate: "2025-01",
     endDate: "2025-04",
-    technologies: ["Python", "PostgreSQL", "React", "Django", "LLM", "REST API", "Docker", "CI/CD"],
+    technologies: ["Python", "PostgreSQL", "React", "Django", "LLM", "REST API", "pgvector", "RAG Pipeline"],
     achievements: [
-      "Reduced costs by 100% by deploying a local LLM to handle medical inquiries, ensuring faster processing times and data privacy",
-      "Increased response speed by 40% by implementing text-to-speech and speech-to-text features with streaming capabilities",
-      "Improved system performance through REST API integration in Django, connecting PostgreSQL backend to React frontend",
-      "Enhanced project delivery by implementing Waterfall SDLC, conducting weekly client meetings and user research"
+      "Reduced costs by 100% by deploying a local LLM to handle medical inquiries, ensuring faster processing times and data privacy. This enhanced user experience, providing security of data and fast responses",
+      "Improved response accuracy by 55% and reduced processing time by 30% by integrating pgvector for efficient storage and retrieval of medical data, and utilizing a RAG pipeline to inject personalized medical data into LLM prompts",
+      "Improved system performance and security through the integration of a REST API in Django, connecting a PostgreSQL backend to a React frontend, organizing data flow, and enabling real-time communication for the full project stack",
+      "Developed a conversational AI agent that increased patient interaction by 45%, allowing them to efficiently manage appointments and medications, thus improving user experience and accessibility",
+      "Built an LLM-powered ETL pipeline to convert user-entered text into structured JSON, enabling clean data flow between frontend and backend systems"
     ],
     companyWebsite: "https://www.providencehealthcare.org",
     employmentType: "Full-Time Contract"
