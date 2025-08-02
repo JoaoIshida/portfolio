@@ -88,13 +88,14 @@ const EXPERIENCES: Experience[] = [
     duration: "4 months",
     startDate: "2025-05",
     endDate: "Present",
-    technologies: ["Python", "PostgreSQL", "React", "Django", "AWS", "REST API", "CI/CD", "SEO"],
+    technologies: ["Next.js", "PostgreSQL", "Python", "AWS", "Sanity CMS", "OAuth", "SEO", "REST API", "CI/CD"],
     achievements: [
-      "Led development of the company website with SEO optimization, implementing dynamic post pages and significantly improving search engine visibility with metadata and performance tools",
-      "Spearheaded Xlens project - an AI-powered photo recognition platform with advanced face detection and scalable architecture using Next.js and Python backend",
-      "Implemented robust face recognition algorithms and efficient image compression pipelines for Xlens, ensuring scalability using AWS services and OAuth-based authentication",
-      "Currently leading technical direction, architecture, and best practices for all ongoing and new projects as Technical Lead Developer",
-      "Oversaw development of multiple incubator initiatives with focus on modern web technologies and scalable solutions"
+      "Led full-cycle development of multiple websites for accelerator and startup initiatives, including the US CAN STARTUP platform",
+      "Redesigned and developed the company website, incorporating dynamic post pages, SEO metadata, and performance optimization—significantly improving search engine visibility",
+      "Spearheaded development of Xlens, an AI-powered photo recognition platform, featuring advanced face detection, image compression pipelines, and scalable architecture built with Next.js, Python, and AWS",
+      "Implemented OAuth-based authentication for Xlens, ensuring secure and seamless user access",
+      "Currently leading technical direction and architecture decisions across all ongoing and upcoming projects as Technical Lead Developer",
+      "Oversaw multiple startup incubator initiatives, delivering scalable, agile, and high-performance web solutions using modern technologies"
     ],
     companyWebsite: "https://www.uscanstartup.com",
     employmentType: "Full-Time"
