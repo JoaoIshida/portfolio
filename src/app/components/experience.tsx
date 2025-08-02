@@ -32,9 +32,10 @@ const EXPERIENCES: Experience[] = [
     technologies: ["JavaScript", "React", "Next.js", "MongoDB", "REST API", "Serverless"],
     achievements: [
       "Led project to become a finalist in the Coast Capital Venture Prize (Chang Institute)",
-      "Reduced data recovery time by 40% by creating a serverless REST API managing course evaluations and user authentication",
-      "Improved system performance by implementing MongoDB database to query data in under 1 second with 10k+ records",
-      "Optimized responsive UI and conducted user research for better UX across devices"
+      "Optimized a responsive UI and conducted user research for a better UX across devices, developing a web application using Next.js, React, and ensuring accessibility to help students plan their graduation",
+      "Led the project to become a finalist in the Coast Capital Venture Prize (Chang Institute), collaborating with a team and designing a business plan for the project",
+      "Reduced data recovery time by 40% by creating a serverless Rest API to manage diverse information such as course evaluations, user authentication, and professor details",
+      "Improved system performance and scalability by implementing a MongoDB database to query data in under 1 second, while storing and retrieving over 10k course-related data"
     ],
     companyWebsite: "https://sfusurge.com/",
     employmentType: "Part-Time"
@@ -50,10 +51,10 @@ const EXPERIENCES: Experience[] = [
     endDate: "2024-12",
     technologies: ["Python", "SQL", "Data Visualization", "AI Chat Curation", "OpenAI", "IBM Watson", "NLP", "Testing"],
     achievements: [
-      "Built an interactive data dashboard for the clients page, enabling real-time monitoring and visualization of key chatbot performance metrics to support client decision-making",
-      "Leveraged AI to assist with chat curation, analyzing and organizing chatbot interactions to improve the quality and relevance of responses",
-      "Used Python to automate repetitive data processing and reporting tasks, increasing efficiency and reducing manual workload",
-      "Increased user engagement by 30% by conducting A/B testing and statistical analysis, implementing data-driven improvements to chatbot conversation flows"
+      "Increased system efficiency by 62% by automating chatbot management, identifying patterns to improve AI accuracy and minimize manual interventions, utilizing OpenAI model to monitor performance, and analyze response times",
+      "Achieved strong user and client approval by creating comprehensive documentation, conducting training sessions, and refining chatbot interactions. Leveraged IBM Watson and backend enhancements to improve intent recognition, Natural Language Understanding (NLU), and dialog management",
+      "Boosted system reliability by 30% through automated E2E testing, identifying potential failure points, simulation of real-world scenarios, and implementing debugging strategies to ensure production stability",
+      "Improved conversational accuracy by 12% through rigorous QA testing, ensuring expected outputs, fixing errors, documenting results, and providing feedback to the development team to improve the overall user experience"
     ],
     companyWebsite: "https://proa.ai",
     employmentType: "Full-Time Co-op"
@@ -67,7 +68,7 @@ const EXPERIENCES: Experience[] = [
     duration: "4 months",
     startDate: "2025-01",
     endDate: "2025-04",
-    technologies: ["Python", "PostgreSQL", "React", "Django", "LLM", "REST API", "pgvector", "RAG Pipeline"],
+    technologies: ["AI LLM", "Python", "Django", "Rest API", "PostgreSQL", "Waterfall SDLC", "pgvector", "RAG Pipeline"],
     achievements: [
       "Reduced costs by 100% by deploying a local LLM to handle medical inquiries, ensuring faster processing times and data privacy. This enhanced user experience, providing security of data and fast responses",
       "Improved response accuracy by 55% and reduced processing time by 30% by integrating pgvector for efficient storage and retrieval of medical data, and utilizing a RAG pipeline to inject personalized medical data into LLM prompts",
@@ -87,13 +88,14 @@ const EXPERIENCES: Experience[] = [
     duration: "4 months",
     startDate: "2025-05",
     endDate: "Present",
-    technologies: ["Python", "PostgreSQL", "React", "Django", "AWS", "REST API", "CI/CD", "SEO"],
+    technologies: ["Next.js", "PostgreSQL", "Python", "AWS", "Sanity CMS", "OAuth", "SEO", "REST API", "CI/CD"],
     achievements: [
-      "Led development of the company website with SEO optimization, implementing dynamic post pages and significantly improving search engine visibility with metadata and performance tools",
-      "Spearheaded Xlens project - an AI-powered photo recognition platform with advanced face detection and scalable architecture using Next.js and Python backend",
-      "Implemented robust face recognition algorithms and efficient image compression pipelines for Xlens, ensuring scalability using AWS services and OAuth-based authentication",
-      "Currently leading technical direction, architecture, and best practices for all ongoing and new projects as Technical Lead Developer",
-      "Oversaw development of multiple incubator initiatives with focus on modern web technologies and scalable solutions"
+      "Led full-cycle development of multiple websites for accelerator and startup initiatives, including the US CAN STARTUP platform",
+      "Redesigned and developed the company website, incorporating dynamic post pages, SEO metadata, and performance optimization—significantly improving search engine visibility",
+      "Spearheaded development of Xlens, an AI-powered photo recognition platform, featuring advanced face detection, image compression pipelines, and scalable architecture built with Next.js, Python, and AWS",
+      "Implemented OAuth-based authentication for Xlens, ensuring secure and seamless user access",
+      "Currently leading technical direction and architecture decisions across all ongoing and upcoming projects as Technical Lead Developer",
+      "Oversaw multiple startup incubator initiatives, delivering scalable, agile, and high-performance web solutions using modern technologies"
     ],
     companyWebsite: "https://www.uscanstartup.com",
     employmentType: "Full-Time"
