@@ -150,12 +150,6 @@ export default function StaticProjects() {
               )}
 
               {/* Custom status messages for specific projects */}
-              {repo.name === "Xlens" && (
-                <div className="w-full text-center py-2 px-4 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-yellow-900 dark:to-orange-900 text-yellow-700 dark:text-yellow-300 text-sm font-medium rounded-lg border border-yellow-200 dark:border-yellow-800">
-                  Coming Soon
-                </div>
-              )}
-
               {repo.name === "GeoCreate" && (
                 <div className="w-full text-center py-2 px-4 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-600 dark:text-gray-400 text-sm font-medium rounded-lg border border-gray-200 dark:border-gray-600">
                   Not Available to Public Yet

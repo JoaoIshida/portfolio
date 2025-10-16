@@ -161,6 +161,12 @@ const skills: SkillGroup[] = [
         href: "https://www.djangoproject.com/",
       },
       {
+        light: icon("fastapi", "light"),
+        dark: icon("fastapi", "dark"),
+        alt: "FastAPI",
+        href: "https://fastapi.tiangolo.com/",
+      },
+      {
         light: icon("supabase", "light"),
         dark: icon("supabase", "dark"),
         alt: "Supabase",
@@ -214,6 +220,12 @@ const skills: SkillGroup[] = [
         href: "https://github.com/",
       },
       {
+        light: icon("aws", "light"),
+        dark: icon("aws", "dark"),
+        alt: "AWS",
+        href: "https://aws.amazon.com/",
+      },
+      {
         light: icon("vercel", "light"),
         dark: icon("vercel", "dark"),
         alt: "Vercel",
@@ -240,7 +252,7 @@ const skills: SkillGroup[] = [
     ],
   },
   {
-    title: "Databases & Data",
+    title: "Databases & Data Science",
     items: [
       {
         light: icon("mongodb", "light"),
@@ -265,6 +277,18 @@ const skills: SkillGroup[] = [
         dark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg",
         alt: "Jupyter",
         href: "https://jupyter.org/",
+      },
+      {
+        light: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg",
+        dark: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg",
+        alt: "Pandas",
+        href: "https://pandas.pydata.org/",
+      },
+      {
+        light: icon("sklearn", "light"),
+        dark: icon("sklearn", "dark"),
+        alt: "Scikit-learn",
+        href: "https://scikit-learn.org/",
       },
     ],
   },
@@ -351,7 +375,7 @@ function getSkillGroupIcon(title: string): string {
       return "⚙️";
     case "DevOps & Cloud":
       return "☁️";
-    case "Databases & Data":
+    case "Databases & Data Science":
       return "🗄️";
     case "Tools & IDEs":
       return "🔧";
