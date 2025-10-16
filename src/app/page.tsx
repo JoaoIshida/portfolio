@@ -40,10 +40,10 @@ const Home = () => {
             <div className="fade-in-up stagger-2 mb-12">
               <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 <span className="text-gradient font-semibold">
-                  Majoring in Computer Science
+                  Software Engineer & CS Graduate
                 </span>
-                . A driven individual interested in building high-quality
-                products. In the process of being a better programmer.
+                . Specializing in Full Stack Development and Data Engineering.
+                Building scalable solutions and innovative products with modern technologies.
               </p>
             </div>
             
@@ -89,8 +89,8 @@ const Home = () => {
               
               <div className="prose prose-lg dark:prose-invert max-w-none mb-8">
                 <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-                  Hey there, my name is <span className="font-semibold text-gradient">Joao Correa</span> and I am a computer science
-                  student at Simon Fraser University. I have always been
+                  Hey there, my name is <span className="font-semibold text-gradient">Joao Correa</span> and I am a Computer Science
+                  graduate from Simon Fraser University. I have always been
                   interested in discovering new technologies and I find great joy
                   in exploring them. My main interest is to make something cool and
                   useful. It is amazing how a few lines of code can result in
@@ -178,7 +178,8 @@ const Home = () => {
           <div className="text-center mb-12">
             <h2 className="section-title mb-4">Get in Touch</h2>
             <p className="section-subtitle max-w-3xl mx-auto text-black">
-              I'm currently looking for <span className="font-semibold text-gradient">New Grad</span> opportunities starting September 2025!<br/>
+              I'm currently seeking <span className="font-semibold text-gradient">Software Engineering</span> opportunities starting September 2025!
+              Particularly interested in roles involving Full Stack Development, Data Engineering, or Cloud Infrastructure.<br/>
               Feel free to use the form below or email me directly at{' '}
               <a
                 href="mailto:jvi2@sfu.ca"

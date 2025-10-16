@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SkeletonExperience } from "./LoadingSkeleton";
 import Image from "next/image";
 
@@ -29,9 +29,8 @@ const EXPERIENCES: Experience[] = [
     duration: "15 months",
     startDate: "2023-10",
     endDate: "2024-12",
-    technologies: ["JavaScript", "React", "Next.js", "MongoDB", "REST API", "Serverless"],
+    technologies: ["JavaScript", "React", "Next.js", "MongoDB", "REST API", "Serverless", "Node.js"],
     achievements: [
-      "Led project to become a finalist in the Coast Capital Venture Prize (Chang Institute)",
       "Optimized a responsive UI and conducted user research for a better UX across devices, developing a web application using Next.js, React, and ensuring accessibility to help students plan their graduation",
       "Led the project to become a finalist in the Coast Capital Venture Prize (Chang Institute), collaborating with a team and designing a business plan for the project",
       "Reduced data recovery time by 40% by creating a serverless Rest API to manage diverse information such as course evaluations, user authentication, and professor details",
@@ -49,12 +48,14 @@ const EXPERIENCES: Experience[] = [
     duration: "8 months",
     startDate: "2024-05",
     endDate: "2024-12",
-    technologies: ["Python", "SQL", "Data Visualization", "AI Chat Curation", "OpenAI", "IBM Watson", "NLP", "Testing"],
+    technologies: ["Python", "SQL", "Data Visualization", "AI Chat Curation", "OpenAI", "IBM Watson", "NLP", "Testing", "CI/CD", "Agile"],
     achievements: [
       "Increased system efficiency by 62% by automating chatbot management, identifying patterns to improve AI accuracy and minimize manual interventions, utilizing OpenAI model to monitor performance, and analyze response times",
       "Achieved strong user and client approval by creating comprehensive documentation, conducting training sessions, and refining chatbot interactions. Leveraged IBM Watson and backend enhancements to improve intent recognition, Natural Language Understanding (NLU), and dialog management",
       "Boosted system reliability by 30% through automated E2E testing, identifying potential failure points, simulation of real-world scenarios, and implementing debugging strategies to ensure production stability",
-      "Improved conversational accuracy by 12% through rigorous QA testing, ensuring expected outputs, fixing errors, documenting results, and providing feedback to the development team to improve the overall user experience"
+      "Improved conversational accuracy by 12% through rigorous QA testing, ensuring expected outputs, fixing errors, documenting results, and providing feedback to the development team to improve the overall user experience",
+      "Built an interactive data dashboard for the clients page, similar to Power BI, enabling real-time monitoring and visualization of key chatbot performance metrics to support client decision-making",
+      "Used Python to automate repetitive data processing and reporting tasks, increasing efficiency and reducing manual workload"
     ],
     companyWebsite: "https://proa.ai",
     employmentType: "Full-Time Co-op"
@@ -68,16 +69,38 @@ const EXPERIENCES: Experience[] = [
     duration: "4 months",
     startDate: "2025-01",
     endDate: "2025-04",
-    technologies: ["AI LLM", "Python", "Django", "Rest API", "PostgreSQL", "Waterfall SDLC", "pgvector", "RAG Pipeline"],
+    technologies: ["AI LLM", "Python", "Django", "REST API", "PostgreSQL", "Waterfall SDLC", "pgvector", "RAG Pipeline", "React", "ETL"],
     achievements: [
-      "Reduced costs by 100% by deploying a local LLM to handle medical inquiries, ensuring faster processing times and data privacy. This enhanced user experience, providing security of data and fast responses",
+      "Reduced costs by 100% by deploying a local LLM to handle medical inquiries, ensuring faster processing times and data privacy, providing security of data and fast responses",
       "Improved response accuracy by 55% and reduced processing time by 30% by integrating pgvector for efficient storage and retrieval of medical data, and utilizing a RAG pipeline to inject personalized medical data into LLM prompts",
       "Improved system performance and security through the integration of a REST API in Django, connecting a PostgreSQL backend to a React frontend, organizing data flow, and enabling real-time communication for the full project stack",
+      "Enhanced project delivery by implementing Waterfall SDLC, conducting weekly client meetings and user research",
       "Developed a conversational AI agent that increased patient interaction by 45%, allowing them to efficiently manage appointments and medications, thus improving user experience and accessibility",
       "Built an LLM-powered ETL pipeline to convert user-entered text into structured JSON, enabling clean data flow between frontend and backend systems"
     ],
     companyWebsite: "https://www.providencehealthcare.org",
     employmentType: "Full-Time Contract"
+  },
+  {
+    id: "xlens",
+    title: "Technical Lead Developer",
+    company: "Xlens",
+    logo: "/xlens-logo.png",
+    date: "May 2025 - Present",
+    duration: "4 months",
+    startDate: "2025-05",
+    endDate: "Present",
+    technologies: ["Python", "AWS EC2", "InsightFace", "PostgreSQL", "pgvector", "Docker", "Vector Search", "Face Recognition", "Image Processing"],
+    achievements: [
+      "Architected AI-powered race photo platform processing thousands of images with state-of-the-art facial recognition, deploying optimized models and scalable pipelines",
+      "Designed and implemented robust database architecture leveraging pgvector and high-dimensional face embeddings for advanced image similarity search at scale",
+      "Engineered an automated pipeline for bulk photo upload, extraction, and metadata analysis leveraging Supabase storage, PostgreSQL, and custom SQL procedures",
+      "Optimized database performance and AWS EC2 workflows through strategic indexing and batch processing, enabling fast and reliable photo-to-user matching across large datasets",
+      "Reduced processing time and improved throughput with parallelized AWS APIs, automated pipelines, and advanced database triggers",
+      "Built full-stack REST APIs for photo and metadata management, enhancing processing speed and integration with AWS EC2 infrastructure"
+    ],
+    companyWebsite: "https://xlens.ca",
+    employmentType: "Full-Time"
   },
   {
     id: "uscanstartup",
@@ -88,14 +111,13 @@ const EXPERIENCES: Experience[] = [
     duration: "4 months",
     startDate: "2025-05",
     endDate: "Present",
-    technologies: ["Next.js", "PostgreSQL", "Python", "AWS", "Sanity CMS", "OAuth", "SEO", "REST API", "CI/CD"],
+    technologies: ["Next.js 15", "TypeScript", "Sanity CMS", "AWS", "SEO Optimization", "REST API", "Vercel", "Performance Optimization"],
     achievements: [
-      "Led full-cycle development of multiple websites for accelerator and startup initiatives, including the US CAN STARTUP platform",
+      "Increased main website visibility and retention by 70% through improved SEO and scalable AWS-based architecture",
       "Redesigned and developed the company website, incorporating dynamic post pages, SEO metadata, and performance optimization—significantly improving search engine visibility",
-      "Spearheaded development of Xlens, an AI-powered photo recognition platform, featuring advanced face detection, image compression pipelines, and scalable architecture built with Next.js, Python, and AWS",
-      "Implemented OAuth-based authentication for Xlens, ensuring secure and seamless user access",
-      "Currently leading technical direction and architecture decisions across all ongoing and upcoming projects as Technical Lead Developer",
-      "Oversaw multiple startup incubator initiatives, delivering scalable, agile, and high-performance web solutions using modern technologies"
+      "Led multiple startup incubator initiatives, delivering full-stack modern web solutions using Next.js, React, TypeScript, and cloud-native deployments",
+      "Implemented comprehensive content management system integration with Sanity CMS for dynamic content delivery",
+      "Enhanced website performance through optimization techniques and scalable cloud infrastructure"
     ],
     companyWebsite: "https://www.uscanstartup.com",
     employmentType: "Full-Time"
@@ -104,19 +126,39 @@ const EXPERIENCES: Experience[] = [
 
 export default function Experience() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const viewMoreRef = useRef<HTMLButtonElement | null>(null);
+  const [pendingScroll, setPendingScroll] = useState(false);
   
   // Sort experiences by startDate (descending - newest first)
   const sortedExperiences = [...EXPERIENCES].sort((a, b) => 
     new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
   );
 
+  // Show only first 2 experiences initially
+  const visibleExperiences = showAll ? sortedExperiences : sortedExperiences.slice(0, 2);
+  const hasMore = sortedExperiences.length > 2;
+
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (pendingScroll && viewMoreRef.current) {
+      const rect = viewMoreRef.current.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      // Scroll so the button is 100px below the top of the viewport
+      window.scrollTo({
+        top: rect.top + scrollTop - 480,
+        behavior: 'smooth',
+      });
+      setPendingScroll(false);
+    }
+  }, [pendingScroll]);
+
   if (!isVisible) {
-    return <SkeletonExperience count={3} />;
+    return <SkeletonExperience count={2} />;
   }
 
   return (
@@ -125,7 +167,7 @@ export default function Experience() {
       <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary-500 via-primary-500 to-secondary-500 hidden lg:block"></div>
       
       <div className="space-y-4 md:space-y-12">
-        {sortedExperiences.map((exp, index) => {
+        {visibleExperiences.map((exp, index) => {
           // Format date for display dynamically
           const formatDate = (date: Date) => {
             const month = date.toLocaleDateString('en', { month: 'short' });
@@ -312,6 +354,29 @@ export default function Experience() {
           );
         })}
       </div>
+
+      {/* View More/Less Button */}
+      {hasMore && (
+        <div className="text-center mt-8 fade-in-up">
+          <button
+            ref={viewMoreRef}
+            onClick={() => {
+              if (showAll) {
+                setShowAll(false);
+                setPendingScroll(true);
+              } else {
+                setShowAll(true);
+              }
+            }}
+            className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-semibold transition-all duration-300 ease-out bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+          >
+            <span className="relative z-10">
+              {showAll ? 'View Less Experience' : 'View More Experience'}
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
+          </button>
+        </div>
+      )}
     </div>
   );
 } 

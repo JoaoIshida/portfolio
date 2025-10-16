@@ -17,55 +17,61 @@ export const STATIC_PROJECTS: StaticProject[] = [
   {
     id: "nova",
     name: "NOVA",
-    description: "Advanced AI chatbot with database integration and agent-based architecture. Features natural language processing, conversation memory, and scalable backend services.",
+    description: "Advanced AI-powered medical chatbot with database integration and agent-based architecture. Features natural language processing for medical inquiries, conversation memory, RAG pipeline for personalized responses, and scalable backend services with FastAPI and PostgreSQL.",
     html_url: "https://github.com/joaoishida/nova",
     status: "finished",
     video: "/cura-pitch.mp4",
     hideCode: true,
     skills: [
       "Python",
-      "Natural Language Processing",
-      "Database Integration",
-      "Agent-based Architecture",
-      "Backend Development",
       "FastAPI",
       "PostgreSQL",
-      "OpenAI API"
+      "LLM/RAG",
+      "pgvector",
+      "NLP",
+      "Agent Architecture",
+      "OpenAI API",
+      "ETL Pipeline"
     ]
   },
   {
     id: "xlens",
     name: "Xlens",
-    description: "AI-powered photo recognition platform with advanced face detection, vectorization for face search, and ANN for face similarity. Built with Next.js, Python backend, and real-time image processing capabilities.",
+    description: "Xlens is an AI-powered photo recognition platform that helps event participants find their photos from various events. The platform uses advanced facial recognition technology to automatically match photos with participants, making it easy for attendees to discover and download their event photos.",
     html_url: "https://github.com/joaoishida/xlens",
-    status: "in-progress",
+    homepage: "https://www.xlens.ca/",
+    status: "finished",
     hideCode: true,
     skills: [
       "Python",
-      "AWS",
-      "React",
-      "Real-time Image Processing",
-      "Vectorization",
-      "ANN (Approximate Nearest Neighbor)"
+      "AWS EC2",
+      "Next.js 15",
+      "PostgreSQL",
+      "pgvector",
+      "InsightFace",
+      "Supabase",
+      "Docker",
+      "Vector Search",
+      "Face Recognition"
     ]
   },
   {
     id: "uscanstartup",
     name: "US CAN Startup",
-    description: "Modern startup website with SEO optimization and scalable design. Features responsive UI, performance optimization, and content management system integration.",
+    description: "US CAN Startup is a startup accelerator and incubator platform that supports entrepreneurs and startups in their journey to success. The website provides resources, networking opportunities, and guidance for emerging businesses looking to scale and grow in the North American market.",
     html_url: "https://github.com/joaoishida/uscanstartup",
     homepage: "https://www.uscanstartup.com",
     status: "finished",
     hideCode: true,
     skills: [
-      "Python",
-      "PostgreSQL",
-      "React",
-      "Django",
+      "Next.js 15",
+      "TypeScript",
+      "Sanity CMS",
       "AWS",
+      "SEO Optimization",
       "REST API",
-      "CI/CD",
-      "SEO"
+      "Vercel",
+      "Performance Optimization"
     ]
   },
   {
@@ -73,6 +79,7 @@ export const STATIC_PROJECTS: StaticProject[] = [
     name: "GeoCreate",
     description: "Interactive mapping and location-based application with real-time data visualization. Combines geospatial technologies with modern web development practices.",
     html_url: "https://github.com/joaoishida/geocreate",
+    homepage: "https://impact-website2.vercel.app/",
     status: "finished",
     hideCode: true,
     skills: [
@@ -93,19 +100,35 @@ export const STATIC_PROJECTS: StaticProject[] = [
   {
     id: "sql-yelp",
     name: "SQL YELP",
-    description: "A Python app with SQLite and Tkinter to search Yelp data. Features business/user search, reviews, and friend requests. Includes setup scripts for DB creation, data import, and triggers.",
+    description: "Yelp-like database system with hierarchical navigation for seamless user interaction. Features business/user search, reviews, and friend requests. Guaranteed data consistency through robust backend with SQL triggers and validation for data integrity.",
     html_url: "https://github.com/joaoishida/SQL-YELP",
     status: "finished",
-    skills: ["Python", "SQLite", "Tkinter", "Data Processing"]
+    skills: [
+      "Python",
+      "SQLite",
+      "Tkinter",
+      "SQL Triggers",
+      "Data Validation",
+      "Database Design"
+    ]
   },
   {
     id: "coursecompass",
     name: "CourseCompass",
-    description: "An website to help students select courses and plan their degrees. Based on various course data such as ratings, reviews, calendar and more, students can acquire and share information with other students.",
+    description: "Finalist in Coast Capital Venture Prize. A comprehensive web application helping students plan their graduation with course evaluations, ratings, and professor details. Features MongoDB database querying 10k+ records in under 1 second, serverless REST API, responsive UI, and reduced data recovery time by 40%.",
     html_url: "https://github.com/joaoishida/CourseCompass",
     homepage: "https://coursecompass.vercel.app",
     status: "finished",
-    skills: ["Web Development", "Course Planning", "Student Tools"]
+    skills: [
+      "Next.js",
+      "React",
+      "MongoDB",
+      "REST API",
+      "Serverless",
+      "Node.js",
+      "User Research",
+      "Responsive Design"
+    ]
   },
   // {
   //   id: "watchhive",
@@ -164,5 +187,21 @@ export const STATIC_PROJECTS: StaticProject[] = [
     status: "finished",
     img: "/hangman.png",
     skills: ["HTML", "CSS", "JavaScript"]
+  },
+  {
+    id: "fifteen-puzzle",
+    name: "Fifteen Puzzle AI Solver",
+    description: "AI-powered puzzle solver implementing advanced heuristic search strategies. Reduced search time by 80% through A* and IDA* (Iterative Deepening A*) algorithms with optimized heuristics for efficient pathfinding and solution generation.",
+    html_url: "https://github.com/joaoishida",
+    status: "finished",
+    hideCode: true,
+    skills: [
+      "Java",
+      "AI Algorithms",
+      "A* Search",
+      "IDA*",
+      "Heuristic Search",
+      "Optimization"
+    ]
   },
 ]; 
