@@ -178,14 +178,14 @@ const Home = () => {
           <div className="text-center mb-12">
             <h2 className="section-title mb-4">Get in Touch</h2>
             <p className="section-subtitle max-w-3xl mx-auto text-black">
-              I'm currently seeking <span className="font-semibold text-gradient">Software Engineering</span> opportunities starting September 2025!
-              Particularly interested in roles involving Full Stack Development, Data Engineering, or Cloud Infrastructure.<br/>
+              I'm currently seeking New Grad opportunities!
+              Particularly interested in roles involving Software Engineering, Full Stack Development, or Web Development.<br/>
               Feel free to use the form below or email me directly at{' '}
               <a
-                href="mailto:jvi2@sfu.ca"
+                href="mailto:joaoishida@gmail.com"
                 className="text-primary-700 dark:text-primary-300 hover:underline text-base font-medium"
               >
-                jvi2@sfu.ca
+                joaoishida@gmail.com
               </a>.
             </p>
           </div>

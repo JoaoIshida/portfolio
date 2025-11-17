@@ -8,6 +8,7 @@ interface FormData {
   email: string;
   subject: string;
   message: string;
+  website: string; // Honeypot field
 }
 
 interface FormErrors {
@@ -23,7 +24,8 @@ export default function ContactForm() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    website: '' // Honeypot field
   });
   
   const [errors, setErrors] = useState<FormErrors>({});
@@ -76,13 +78,18 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Honeypot check - silently reject if filled
+    if (formData.website.trim() !== '') {
+      return; // Bot detected, silently fail
+    }
+    
     if (!validateForm()) return;
     
     setIsSubmitting(true);
     
     try {
       // Use FormSubmit service
-      const formSubmitResponse = await fetch('https://formsubmit.co/jvi2@sfu.ca', {
+      const formSubmitResponse = await fetch('https://formsubmit.co/joaoishida@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +107,7 @@ export default function ContactForm() {
       
       if (formSubmitResponse.ok) {
         setIsSuccess(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', website: '' });
         
         // Reset success state after 5 seconds
         setTimeout(() => setIsSuccess(false), 5000);
@@ -209,6 +216,25 @@ ${formData.email || '[Your Email]'}`
                 error={errors.message}
                 placeholder="Tell me about your project, idea, or just say hi!"
                 rows={5}
+              />
+              
+              {/* Honeypot field - hidden from users but visible to bots */}
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  width: '1px',
+                  height: '1px',
+                  opacity: 0,
+                  pointerEvents: 'none'
+                }}
               />
                              
                {errors.submit && (
