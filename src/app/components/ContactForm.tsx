@@ -8,7 +8,6 @@ interface FormData {
   email: string;
   subject: string;
   message: string;
-  website: string; // Honeypot field
 }
 
 interface FormErrors {
@@ -24,8 +23,7 @@ export default function ContactForm() {
     name: '',
     email: '',
     subject: '',
-    message: '',
-    website: '' // Honeypot field
+    message: ''
   });
   
   const [errors, setErrors] = useState<FormErrors>({});
@@ -78,48 +76,56 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Honeypot check - silently reject if filled
-    if (formData.website.trim() !== '') {
-      return; // Bot detected, silently fail
+    console.log('Form submit initiated');
+    
+    if (!validateForm()) {
+      console.log('Form validation failed');
+      return;
     }
     
-    if (!validateForm()) return;
-    
     setIsSubmitting(true);
+    console.log('Starting form submission...');
     
     try {
-      // Use FormSubmit service
+      // Use FormSubmit service with FormData
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('subject', formData.subject);
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('_subject', `Portfolio Contact: ${formData.subject}`);
+      formDataToSend.append('_replyto', formData.email);
+      formDataToSend.append('_template', 'table');
+      formDataToSend.append('_captcha', 'false');
+      // Note: We don't include _autoresponse field - this ensures only you receive emails, not the submitter
+      
       const formSubmitResponse = await fetch('https://formsubmit.co/joaoishida@gmail.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          _subject: `Portfolio Contact: ${formData.subject}`,
-          _replyto: formData.email,
-          _template: 'table'
-        })
+        body: formDataToSend,
       });
       
-      if (formSubmitResponse.ok) {
+      console.log('FormSubmit response status:', formSubmitResponse.status, 'ok:', formSubmitResponse.ok);
+      
+      // FormSubmit returns 200 on success (after redirect handling)
+      // Accept 200-299 status codes as success
+      if (formSubmitResponse.ok || (formSubmitResponse.status >= 200 && formSubmitResponse.status < 300)) {
+        console.log('Form submission successful');
         setIsSuccess(true);
-        setFormData({ name: '', email: '', subject: '', message: '', website: '' });
-        
-        // Reset success state after 5 seconds
-        setTimeout(() => setIsSuccess(false), 5000);
+        setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        throw new Error('Failed to send message');
+        const responseText = await formSubmitResponse.text().catch(() => '');
+        console.error('FormSubmit error - status:', formSubmitResponse.status, 'response:', responseText);
+        throw new Error(`Submission failed with status ${formSubmitResponse.status}`);
       }
       
     } catch (error) {
       console.error('Form submission error:', error);
-      setErrors({ submit: 'Failed to send message. Please try again or use the email button below.' });
+      setErrors({ 
+        submit: 'Failed to send message. Please try again later or contact me directly via email.' 
+      });
     } finally {
       setIsSubmitting(false);
+      console.log('Form submission process completed');
     }
   };
 
@@ -153,8 +159,11 @@ ${formData.email || '[Your Email]'}`
             <h3 className="text-2xl font-semibold text-green-600 dark:text-green-400 mb-2">
               Thank you for your message!
             </h3>
-            <p className="text-gray-700 dark:text-gray-200 mb-6">
+            <p className="text-gray-700 dark:text-gray-200 mb-2">
               I'll get back to you as soon as possible.
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              Note: If this is your first submission, please check your email (including spam) for a confirmation link from FormSubmit.
             </p>
             <button
               onClick={() => setIsSuccess(false)}
@@ -216,25 +225,6 @@ ${formData.email || '[Your Email]'}`
                 error={errors.message}
                 placeholder="Tell me about your project, idea, or just say hi!"
                 rows={5}
-              />
-              
-              {/* Honeypot field - hidden from users but visible to bots */}
-              <input
-                type="text"
-                name="website"
-                value={formData.website}
-                onChange={handleChange}
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  left: '-9999px',
-                  width: '1px',
-                  height: '1px',
-                  opacity: 0,
-                  pointerEvents: 'none'
-                }}
               />
                              
                {errors.submit && (
