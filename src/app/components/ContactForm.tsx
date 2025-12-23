@@ -97,7 +97,6 @@ export default function ContactForm() {
       formDataToSend.append('_replyto', formData.email);
       formDataToSend.append('_template', 'table');
       formDataToSend.append('_captcha', 'false');
-      // Note: We don't include _autoresponse field - this ensures only you receive emails, not the submitter
       
       const formSubmitResponse = await fetch('https://formsubmit.co/joaoishida@gmail.com', {
         method: 'POST',
@@ -161,9 +160,6 @@ ${formData.email || '[Your Email]'}`
             </h3>
             <p className="text-gray-700 dark:text-gray-200 mb-2">
               I'll get back to you as soon as possible.
-            </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              Note: If this is your first submission, please check your email (including spam) for a confirmation link from FormSubmit.
             </p>
             <button
               onClick={() => setIsSuccess(false)}
