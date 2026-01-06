@@ -83,44 +83,40 @@ const EXPERIENCES: Experience[] = [
   },
   {
     id: "xlens",
-    title: "Technical Lead Developer",
+    title: "Full Stack Developer",
     company: "Xlens",
     logo: "/xlens-logo.png",
-    date: "May 2025 - Present",
+    date: "July 2025 - Present",
     duration: "4 months",
-    startDate: "2025-05",
+    startDate: "2025-07",
     endDate: "Present",
-    technologies: ["Python", "AWS EC2", "InsightFace", "PostgreSQL", "pgvector", "Docker", "Vector Search", "Face Recognition", "Image Processing"],
+    technologies: ["Python", "Next.js 15", "TypeScript", "AWS EC2", "InsightFace", "PostgreSQL", "pgvector", "Supabase", "Docker", "Vector Search", "Face Recognition"],
     achievements: [
-      "Architected AI-powered race photo platform processing thousands of images with state-of-the-art facial recognition, deploying optimized models and scalable pipelines",
-      "Designed and implemented robust database architecture leveraging pgvector and high-dimensional face embeddings for advanced image similarity search at scale",
-      "Engineered an automated pipeline for bulk photo upload, extraction, and metadata analysis leveraging Supabase storage, PostgreSQL, and custom SQL procedures",
-      "Optimized database performance and AWS EC2 workflows through strategic indexing and batch processing, enabling fast and reliable photo-to-user matching across large datasets",
-      "Reduced processing time and improved throughput with parallelized AWS APIs, automated pipelines, and advanced database triggers",
-      "Built full-stack REST APIs for photo and metadata management, enhancing processing speed and integration with AWS EC2 infrastructure"
+      "Built and shipped Xlens, an AI-driven race photo platform using InsightFace models and pgvector for facial recognition and sub-second photo-to-user matching across thousands of images",
+      "Improved face detection accuracy by 4% through advanced image preprocessing, angle detection, face blocking techniques, and model optimization, deploying containerized cloud-based processing pipelines with Docker on AWS EC2 for horizontal scalability",
+      "Built automated bulk photo processing pipeline with parallelized API infrastructure and worker threads, reducing processing time by 60% through distributed computing, batch processing optimizations, and intelligent queue management",
+      "Designed and implemented vector database architecture with pgvector for face embeddings, including embeddings for face angles and face blockages, supporting cosine similarity search across large-scale datasets with fast query performance",
+      "Built full-stack REST APIs using Next.js 15 and TypeScript, integrating Supabase for real-time data synchronization, authentication, and secure access policies with role-based permissions"
     ],
     companyWebsite: "https://xlens.ca",
-    employmentType: "Full-Time"
+    employmentType: "Part-Time"
   },
   {
     id: "uscanstartup",
-    title: "Technical Lead Developer",
+    title: "Web Developer",
     company: "US CAN Startup",
     logo: "/uscan-logo.jpeg",
     date: "May 2025 - Present",
     duration: "4 months",
     startDate: "2025-05",
     endDate: "Present",
-    technologies: ["Next.js 15", "TypeScript", "Sanity CMS", "AWS", "SEO Optimization", "REST API", "Vercel", "Performance Optimization"],
+    technologies: ["Next.js 15", "TypeScript", "Python", "AWS EC2", "Supabase", "Sanity CMS", "RAG", "LLM", "SEO Optimization", "REST API"],
     achievements: [
-      "Increased main website visibility and retention by 70% through improved SEO and scalable AWS-based architecture",
-      "Redesigned and developed the company website, incorporating dynamic post pages, SEO metadata, and performance optimization—significantly improving search engine visibility",
-      "Led multiple startup incubator initiatives, delivering full-stack modern web solutions using Next.js, React, TypeScript, and cloud-native deployments",
-      "Implemented comprehensive content management system integration with Sanity CMS for dynamic content delivery",
-      "Enhanced website performance through optimization techniques and scalable cloud infrastructure"
+      "Improved website management and performance through SEO optimization and Sanity CMS integration, increasing organic visibility and user retention by 70%",
+      "Built a custom chatbot system with built-in system knowledge and classification capabilities, using similarity matching algorithms, topic-based response generation, and RAG for improved knowledge retrieval and context-aware responses"
     ],
     companyWebsite: "https://www.uscanstartup.com",
-    employmentType: "Full-Time"
+    employmentType: "Part-Time"
   }
 ];
 

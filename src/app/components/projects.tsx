@@ -145,7 +145,7 @@ export default function StaticProjects() {
                   rel="noopener noreferrer"
                   className={`${repo.html_url && repo.html_url !== "#" && !repo.hideCode ? "flex-1" : "w-full"} btn-primary text-sm py-2 px-4 text-center hover:shadow-medium transition-all duration-200`}
                 >
-                  Live Demo
+                  {(repo.name === "Xlens" || repo.name === "US CAN Startup" || repo.name === "WatchHive") ? "View Website" : "Live Demo"}
                 </a>
               )}
 

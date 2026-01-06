@@ -37,7 +37,7 @@ export const STATIC_PROJECTS: StaticProject[] = [
   {
     id: "xlens",
     name: "Xlens",
-    description: "Xlens is an AI-powered photo recognition platform that helps event participants find their photos from various events. The platform uses advanced facial recognition technology to automatically match photos with participants, making it easy for attendees to discover and download their event photos.",
+    description: "AI-driven race photo platform using InsightFace models and pgvector for facial recognition and sub-second photo-to-user matching across thousands of images. Improved face detection accuracy by 4% through advanced image preprocessing, angle detection, and model optimization. Built automated bulk photo processing pipeline with parallelized API infrastructure, reducing processing time by 60% through distributed computing and intelligent queue management. Designed vector database architecture with pgvector for face embeddings, supporting cosine similarity search across large-scale datasets.",
     html_url: "https://github.com/joaoishida/xlens",
     homepage: "https://www.xlens.ca/",
     status: "finished",
@@ -46,19 +46,41 @@ export const STATIC_PROJECTS: StaticProject[] = [
       "Python",
       "AWS EC2",
       "Next.js 15",
+      "TypeScript",
       "PostgreSQL",
       "pgvector",
       "InsightFace",
       "Supabase",
       "Docker",
       "Vector Search",
-      "Face Recognition"
+      "Face Recognition",
+      "REST API"
+    ]
+  },
+  {
+    id: "watchhive",
+    name: "WatchHive",
+    description: "A comprehensive platform for discovering, tracking, and sharing movies and series. Features advanced filtering (genre, year, rating, streaming providers), personalized recommendations, user tracking (watched status, wishlist, series progress), custom lists, and JWT-based authentication. Built with Next.js 16, Supabase, and TMDB API integration.",
+    html_url: "https://github.com/joaoishida/WatchHive",
+    homepage: "https://whive.vercel.app",
+    status: "in-progress",
+    skills: [
+      "Next.js 16",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "JWT Authentication",
+      "TMDB API",
+      "Tailwind CSS",
+      "REST API",
+      "User Tracking",
+      "Content Discovery"
     ]
   },
   {
     id: "uscanstartup",
     name: "US CAN Startup",
-    description: "US CAN Startup is a startup accelerator and incubator platform that supports entrepreneurs and startups in their journey to success. The website provides resources, networking opportunities, and guidance for emerging businesses looking to scale and grow in the North American market.",
+    description: "Startup accelerator platform where I improved SEO rankings and page performance, increasing organic visibility and user retention by 70%. Integrated Sanity CMS for automated blog posting and content management, allowing the team to publish and update content without engineering support. Built a custom chatbot system with built-in system knowledge and classification capabilities, using similarity matching algorithms, topic-based response generation, and RAG (Retrieval-Augmented Generation) for improved knowledge retrieval and context-aware responses.",
     html_url: "https://github.com/joaoishida/uscanstartup",
     homepage: "https://www.uscanstartup.com",
     status: "finished",
@@ -66,8 +88,12 @@ export const STATIC_PROJECTS: StaticProject[] = [
     skills: [
       "Next.js 15",
       "TypeScript",
+      "Python",
       "Sanity CMS",
-      "AWS",
+      "AWS EC2",
+      "Supabase",
+      "RAG",
+      "LLM",
       "SEO Optimization",
       "REST API",
       "Vercel",
@@ -117,7 +143,6 @@ export const STATIC_PROJECTS: StaticProject[] = [
     name: "CourseCompass",
     description: "Finalist in Coast Capital Venture Prize. A comprehensive web application helping students plan their graduation with course evaluations, ratings, and professor details. Features MongoDB database querying 10k+ records in under 1 second, serverless REST API, responsive UI, and reduced data recovery time by 40%.",
     html_url: "https://github.com/joaoishida/CourseCompass",
-    homepage: "https://coursecompass.vercel.app",
     status: "finished",
     skills: [
       "Next.js",
@@ -130,14 +155,6 @@ export const STATIC_PROJECTS: StaticProject[] = [
       "Responsive Design"
     ]
   },
-  // {
-  //   id: "watchhive",
-  //   name: "WatchHive",
-  //   description: "Is the ultimate platform for discovering, tracking, and sharing your love for movies, series, and more. Designed with a community-first approach, Watch Hive offers a comprehensive suite of features to keep you informed and connected with fellow enthusiasts.",
-  //   html_url: "https://github.com/joaoishida/WatchHive",
-  //   status: "finished",
-  //   skills: ["Web Development", "Community Features", "Entertainment"]
-  // },
   {
     id: "movie-recommender",
     name: "Movie Recommender",
