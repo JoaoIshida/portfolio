@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 type SkillItem = {
   light: string; // icon for light mode (white background)
@@ -329,37 +332,54 @@ const skills: SkillGroup[] = [
   },
 ];
 
+function SkillGroup({ title, items, groupIndex }: { title: string; items: SkillItem[]; groupIndex: number }) {
+  const { ref, isVisible } = useScrollAnimation({
+    threshold: 0.15,
+    rootMargin: "0px",
+    triggerOnce: true,
+  });
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+      style={{ transitionDelay: `${groupIndex * 150}ms` }}
+    >
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-2">
+          <span className="text-primary-500">
+            {getSkillGroupIcon(title)}
+          </span>
+          {title}
+        </h3>
+        <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></div>
+      </div>
+      
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
+        {items.map((item, itemIndex) => (
+          <div
+            key={item.alt}
+            className={`transition-all duration-500 ease-out ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
+            style={{ transitionDelay: isVisible ? `${itemIndex * 60}ms` : "0ms" }}
+          >
+            <SkillIcon {...item} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Skills() {
   return (
     <div className="space-y-8">
       {skills.map(({ title, items }, groupIndex) => (
-        <div 
-          key={title} 
-          className={`fade-in-up stagger-${Math.min(groupIndex + 1, 5)}`}
-          style={{animationDelay: `${groupIndex * 0.1}s`}}
-        >
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-2">
-              <span className="text-primary-500">
-                {getSkillGroupIcon(title)}
-              </span>
-              {title}
-            </h3>
-            <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"></div>
-          </div>
-          
-          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
-            {items.map((item, itemIndex) => (
-              <div
-                key={item.alt}
-                className={`fade-in-up stagger-${Math.min(itemIndex % 5 + 1, 5)}`}
-                style={{animationDelay: `${(groupIndex * 0.1) + (itemIndex * 0.05)}s`}}
-              >
-                <SkillIcon {...item} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <SkillGroup
+          key={title}
+          title={title}
+          items={items}
+          groupIndex={groupIndex}
+        />
       ))}
     </div>
   );
