@@ -5,16 +5,14 @@ import TextChange from "./components/TextChange";
 import StaticProjects from "./components/projects";
 import Experience from "./components/experience";
 import ContactForm from "./components/ContactForm";
+import ScrollReveal from "./components/ScrollReveal";
+import AnimatedBackground from "./components/AnimatedBackground";
 
 const Home = () => {
   return (
     <main className="min-h-screen">
-      {/* Hero Background that extends to navbar */}
-      <div className="fixed inset-0 bg-gradient-subtle overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 via-transparent to-secondary-50/50 dark:from-primary-950/50 dark:to-secondary-950/50"></div>
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary-300/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-300/20 rounded-full blur-3xl animate-pulse-slow" style={{animationDelay: '1s'}}></div>
-      </div>
+      {/* Animated Hero Background */}
+      <AnimatedBackground />
 
       {/* Hero Section */}
       <section 
@@ -84,7 +82,7 @@ const Home = () => {
         <div className="section-container">
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Content */}
-            <div className="flex-1 fade-in-right">
+            <ScrollReveal animation="fade-in-right" className="flex-1">
               <h2 className="section-title text-left mb-8">About Me</h2>
               
               <div className="prose prose-lg dark:prose-invert max-w-none mb-8">
@@ -102,7 +100,7 @@ const Home = () => {
               </div>
               
               {/* Profile Image - Mobile Only */}
-              <div className="flex-shrink-0 fade-in-left flex flex-wrap justify-center lg:hidden">
+              <div className="flex-shrink-0 flex flex-wrap justify-center lg:hidden">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
                   <div className="relative bg-white dark:bg-darkLight rounded-2xl p-2 shadow-hard hover-lift">
@@ -126,10 +124,10 @@ const Home = () => {
                 <h3 className="text-2xl font-semibold mb-4 text-gradient">Languages</h3>
                 <LanguageProficiency />
               </div>
-            </div>
+            </ScrollReveal>
             
             {/* Profile Image - Desktop Only */}
-            <div className="hidden lg:block flex-shrink-0 fade-in-left mx-auto">
+            <ScrollReveal animation="fade-in-left" className="hidden lg:block flex-shrink-0 mx-auto">
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
                 <div className="relative bg-white dark:bg-darkLight rounded-2xl p-2 shadow-hard hover-lift">
@@ -140,7 +138,7 @@ const Home = () => {
                   />
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -151,8 +149,10 @@ const Home = () => {
         className="section relative bg-gradient-to-br from-light to-lightLight dark:from-dark dark:to-darkDark scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-24 z-10"
       >
         <div className="section-container">
-          <h2 className="section-title mb-4">Work Experience</h2>
-          <p className="section-subtitle">My professional journey and key achievements</p>
+          <ScrollReveal animation="fade-in-up">
+            <h2 className="section-title mb-4">Work Experience</h2>
+            <p className="section-subtitle">My professional journey and key achievements</p>
+          </ScrollReveal>
           <Experience />
         </div>
       </section>
@@ -163,8 +163,10 @@ const Home = () => {
         className="section relative bg-gradient-to-br from-lightLight to-light dark:from-darkDark dark:to-dark scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-24 z-10"
       >
         <div className="section-container">
-          <h2 className="section-title mb-4">Latest Projects</h2>
-          <p className="section-subtitle">Check out some of my recent work and contributions</p>
+          <ScrollReveal animation="fade-in-up">
+            <h2 className="section-title mb-4">Latest Projects</h2>
+            <p className="section-subtitle">Check out some of my recent work and contributions</p>
+          </ScrollReveal>
           <StaticProjects />
         </div>
       </section>
@@ -175,9 +177,10 @@ const Home = () => {
         className="section relative bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 z-10"
       >
         <div className="section-container">
-          <div className="text-center mb-12">
-            <h2 className="section-title mb-4">Get in Touch</h2>
-            <p className="section-subtitle max-w-3xl mx-auto text-black">
+          <ScrollReveal animation="fade-in-up">
+            <div className="text-center mb-12">
+              <h2 className="section-title mb-4">Get in Touch</h2>
+              <p className="section-subtitle max-w-3xl mx-auto text-black">
               I'm currently seeking New Grad opportunities!
               Particularly interested in roles involving Software Engineering, Full Stack Development, or Web Development.<br/>
               Feel free to use the form below or email me directly at{' '}
@@ -188,7 +191,8 @@ const Home = () => {
                 joaoishida@gmail.com
               </a>.
             </p>
-          </div>
+            </div>
+          </ScrollReveal>
           
           <ContactForm />
         </div>

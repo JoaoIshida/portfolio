@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import ScrollReveal from "./ScrollReveal";
 import { STATIC_PROJECTS, StaticProject, Status } from "../data/projectOverrides";
 
 type Repo = StaticProject;
@@ -50,11 +51,13 @@ export default function StaticProjects() {
       {/* Repo Cards */}
       <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((repo, index) => (
-          <div
+          <ScrollReveal
             key={repo.id}
-            className={`card-interactive group p-6 h-full flex flex-col fade-in-up stagger-${Math.min(index % 6 + 1, 5)}`}
-            style={{animationDelay: `${index * 0.1}s`}}
+            animation="fade-in-up"
+            delay={index * 100}
+            className="h-full"
           >
+            <div className="card-interactive group p-6 h-full flex flex-col">
 
             <div className="flex-1 flex flex-col">
               {/* Header */}
@@ -162,7 +165,8 @@ export default function StaticProjects() {
                 </div>
               )}
             </div>
-          </div>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
 

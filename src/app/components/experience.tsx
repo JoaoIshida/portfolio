@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SkeletonExperience } from "./LoadingSkeleton";
+import ScrollReveal from "./ScrollReveal";
 import Image from "next/image";
 
 type Experience = {
@@ -180,10 +181,11 @@ export default function Experience() {
           const timePosition = isCardOnRight ? 'right-14' : 'left-14';
           
           return (
-            <div
+            <ScrollReveal
               key={exp.id}
-              className={`relative fade-in-up stagger-${Math.min(index % 6 + 1, 5)}`}
-              style={{animationDelay: `${index * 0.1}s`}}
+              animation={index % 2 === 0 ? "fade-in-right" : "fade-in-left"}
+              delay={index * 150}
+              className="relative"
             >
               {/* Timeline Point - CSS positioned relative to this card */}
               <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 top-6 z-10">
@@ -346,7 +348,7 @@ export default function Experience() {
                 {/* Empty space for alternating layout */}
                 <div className="hidden lg:block"></div>
               </div>
-            </div>
+            </ScrollReveal>
           );
         })}
       </div>

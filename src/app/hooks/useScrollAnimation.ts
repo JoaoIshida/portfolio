@@ -99,7 +99,7 @@ export function useScrollProgress() {
       setScrollProgress(Math.min(progress, 100));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -123,7 +123,7 @@ export function useScrollDirection() {
       setLastScrollY(scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrollDirection, lastScrollY]);
 
