@@ -1,260 +1,252 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 export default function AnimatedBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: -1000, y: -1000, active: false });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    setMounted(true);
+  }, []);
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+  if (!mounted) return null;
 
-    let animationFrameId: number;
+  return <LavaLamp />;
+}
 
-    // Detect device
-    const isMobile = () => window.innerWidth < 768;
-    const isDark = () => document.documentElement.classList.contains('dark');
+function LavaLamp() {
+  const [isDark, setIsDark] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorBlobRef = useRef<HTMLDivElement>(null);
 
-    // Resize canvas
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
+  useEffect(() => {
+    // Check initial state
+    setIsDark(document.documentElement.classList.contains('dark'));
+    setIsMobile(window.innerWidth < 768);
 
-    // Colors - subtle greys like original
-    const getColors = () => isDark()
-      ? ['#1e3a8a', '#0c4a6e', '#1f2937', '#374151']
-      : ['#bfdbfe', '#bae6fd', '#e5e7eb', '#f3f4f6'];
-
-    const getBgColor = () => isDark() ? '#0a0a0a' : '#ffffff';
-
-    // Blob class with physics
-    class Blob {
-      x: number;
-      y: number;
-      baseX: number;
-      baseY: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      color: string;
-      opacity: number;
-      angle: number;
-      angleSpeed: number;
-      floatAmplitudeX: number;
-      floatAmplitudeY: number;
-      floatSpeedX: number;
-      floatSpeedY: number;
-
-      constructor(color: string) {
-        const width = canvas!.width;
-        const height = canvas!.height;
-        const mobile = isMobile();
-
-        this.radius = mobile
-          ? 100 + Math.random() * 80
-          : 150 + Math.random() * 120;
-
-        this.baseX = Math.random() * width;
-        this.baseY = Math.random() * height;
-        this.x = this.baseX;
-        this.y = this.baseY;
-        this.vx = 0;
-        this.vy = 0;
-
-        this.color = color;
-        this.opacity = isDark() ? 0.25 : 0.2;
-
-        // Floating animation parameters
-        this.angle = Math.random() * Math.PI * 2;
-        this.angleSpeed = 0.005 + Math.random() * 0.01;
-        this.floatAmplitudeX = 50 + Math.random() * 100;
-        this.floatAmplitudeY = 100 + Math.random() * 150;
-        this.floatSpeedX = 0.3 + Math.random() * 0.5;
-        this.floatSpeedY = 0.2 + Math.random() * 0.4;
-      }
-
-      update(mouse: { x: number; y: number; active: boolean }) {
-        // Natural floating motion
-        this.angle += this.angleSpeed;
-        const targetX = this.baseX + Math.sin(this.angle * this.floatSpeedX) * this.floatAmplitudeX;
-        const targetY = this.baseY + Math.cos(this.angle * this.floatSpeedY) * this.floatAmplitudeY;
-
-        // Mouse/touch repulsion
-        if (mouse.active) {
-          const dx = this.x - mouse.x;
-          const dy = this.y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const repelRadius = isMobile() ? 150 : 250;
-          const repelStrength = isMobile() ? 8 : 12;
-
-          if (dist < repelRadius && dist > 0) {
-            const force = (repelRadius - dist) / repelRadius;
-            const angle = Math.atan2(dy, dx);
-            this.vx += Math.cos(angle) * force * repelStrength;
-            this.vy += Math.sin(angle) * force * repelStrength;
-          }
-        }
-
-        // Apply velocity with damping
-        this.x += this.vx;
-        this.y += this.vy;
-        this.vx *= 0.92;
-        this.vy *= 0.92;
-
-        // Smoothly return to floating path
-        this.x += (targetX - this.x) * 0.02;
-        this.y += (targetY - this.y) * 0.02;
-
-        // Keep in bounds with soft bounce
-        const padding = this.radius;
-        if (this.x < -padding) this.baseX += canvas!.width + padding * 2;
-        if (this.x > canvas!.width + padding) this.baseX -= canvas!.width + padding * 2;
-        if (this.y < -padding) this.baseY += canvas!.height + padding * 2;
-        if (this.y > canvas!.height + padding) this.baseY -= canvas!.height + padding * 2;
-      }
-
-      draw(ctx: CanvasRenderingContext2D) {
-        // Create soft gradient blob
-        const gradient = ctx.createRadialGradient(
-          this.x, this.y, 0,
-          this.x, this.y, this.radius
-        );
-
-        // Parse color to RGB
-        const hex = this.color.replace('#', '');
-        const r = parseInt(hex.substring(0, 2), 16);
-        const g = parseInt(hex.substring(2, 4), 16);
-        const b = parseInt(hex.substring(4, 6), 16);
-
-        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.opacity})`);
-        gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.5})`);
-        gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
-
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    // Create blobs
-    const createBlobs = () => {
-      const colors = getColors();
-      const count = isMobile() ? 6 : 10;
-      return Array.from({ length: count }, (_, i) =>
-        new Blob(colors[i % colors.length])
-      );
-    };
-
-    let blobs = createBlobs();
-
-    // Mouse/touch tracking
-    const updateMouse = (x: number, y: number) => {
-      mouseRef.current = { x, y, active: true };
-    };
-
-    const clearMouse = () => {
-      mouseRef.current.active = false;
-    };
-
-    // Mouse events
-    const handleMouseMove = (e: MouseEvent) => updateMouse(e.clientX, e.clientY);
-    const handleMouseLeave = () => clearMouse();
-    const handleMouseEnter = (e: MouseEvent) => updateMouse(e.clientX, e.clientY);
-
-    // Touch events
-    const handleTouchStart = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        updateMouse(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    };
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        updateMouse(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    };
-    const handleTouchEnd = () => clearMouse();
-
-    // Add event listeners
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('mouseenter', handleMouseEnter);
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd);
-
-    // Animation loop
-    const animate = () => {
-      const bgColor = getBgColor();
-      
-      // Parse background color
-      const hex = bgColor.replace('#', '');
-      const r = parseInt(hex.substring(0, 2), 16);
-      const g = parseInt(hex.substring(2, 4), 16);
-      const b = parseInt(hex.substring(4, 6), 16);
-
-      // Clear with background
-      ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Update and draw blobs
-      blobs.forEach(blob => {
-        blob.update(mouseRef.current);
-        blob.draw(ctx);
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    // Theme change observer
+    // Watch for theme changes
     const observer = new MutationObserver(() => {
-      blobs = createBlobs();
+      setIsDark(document.documentElement.classList.contains('dark'));
     });
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['class']
     });
 
-    // Resize handler
-    let resizeTimeout: NodeJS.Timeout;
+    // Watch for resize
     const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        resize();
-        blobs = createBlobs();
-      }, 250);
+      setIsMobile(window.innerWidth < 768);
     };
     window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('mouseenter', handleMouseEnter);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-      cancelAnimationFrame(animationFrameId);
       observer.disconnect();
-      clearTimeout(resizeTimeout);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
+  // Mouse tracking - direct DOM manipulation for instant response (no React re-renders)
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (cursorBlobRef.current) {
+      cursorBlobRef.current.style.left = `${e.clientX}px`;
+      cursorBlobRef.current.style.top = `${e.clientY}px`;
+      cursorBlobRef.current.style.opacity = '0.6';
+    }
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (cursorBlobRef.current) {
+      cursorBlobRef.current.style.opacity = '0';
+    }
+  }, []);
+
+  // Touch tracking - direct DOM manipulation for instant response
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    if (e.touches.length > 0 && cursorBlobRef.current) {
+      const touch = e.touches[0];
+      cursorBlobRef.current.style.left = `${touch.clientX}px`;
+      cursorBlobRef.current.style.top = `${touch.clientY}px`;
+      cursorBlobRef.current.style.opacity = '0.6';
+    }
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    if (cursorBlobRef.current) {
+      cursorBlobRef.current.style.opacity = '0';
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [handleMouseMove, handleMouseLeave, handleTouchMove, handleTouchEnd]);
+
+  // Colors based on theme - subtle greys like original
+  const colors = isDark
+    ? ['#1e3a8a', '#0c4a6e', '#1f2937', '#374151']
+    : ['#eff6ff', '#f0f9ff', '#e5e7eb', '#f3f4f6'];
+
+  const cursorColor = isDark ? '#6b7280' : '#d1d5db'; // gray-500 / gray-300
+  const bgColor = isDark ? '#0a0a0a' : '#ffffff';
+  
+  const blobCount = isMobile ? 5 : 8;
+
+  // Generate blob data (stable across renders)
+  const [blobs] = useState(() => 
+    Array.from({ length: blobCount }, (_, i) => ({
+      id: i,
+      size: isMobile ? 200 + Math.random() * 150 : 300 + Math.random() * 250,
+      duration: 20 + Math.random() * 25,
+      delay: Math.random() * -25,
+      startX: Math.random() * 100,
+      colorIndex: i % 4,
+    }))
+  );
+
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 z-0"
-      style={{ touchAction: 'none' }}
-    />
+    <div 
+      ref={containerRef}
+      className="fixed inset-0 overflow-hidden pointer-events-none z-0"
+      style={{ backgroundColor: bgColor }}
+    >
+      {/* SVG Filter for gooey/metaball effect */}
+      <svg className="absolute w-0 h-0">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+              result="goo"
+            />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Lava lamp container with goo filter */}
+      <div 
+        className="absolute inset-0"
+        style={{ filter: 'url(#goo)' }}
+      >
+        {/* Lava blobs */}
+        {blobs.map((blob) => (
+          <div
+            key={blob.id}
+            className="absolute rounded-full lava-blob"
+            style={{
+              width: blob.size,
+              height: blob.size,
+              backgroundColor: colors[blob.colorIndex],
+              left: `${blob.startX}%`,
+              opacity: isDark ? 0.5 : 0.3,
+              animation: `lavaMove${blob.id % 3} ${blob.duration}s ease-in-out infinite`,
+              animationDelay: `${blob.delay}s`,
+            }}
+          />
+        ))}
+
+        {/* Cursor blob - follows mouse/touch */}
+        <div
+          ref={cursorBlobRef}
+          className="absolute rounded-full cursor-blob"
+          style={{
+            width: isMobile ? 60 : 80,
+            height: isMobile ? 60 : 80,
+            backgroundColor: cursorColor,
+            left: -200,
+            top: -200,
+            transform: 'translate(-50%, -50%)',
+            opacity: 0,
+          }}
+        />
+      </div>
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes lavaMove0 {
+          0%, 100% {
+            transform: translateY(100vh) scale(1);
+            border-radius: 50%;
+          }
+          25% {
+            transform: translateY(60vh) scale(1.1) translateX(10vw);
+            border-radius: 45% 55% 50% 50%;
+          }
+          50% {
+            transform: translateY(20vh) scale(0.9) translateX(-5vw);
+            border-radius: 55% 45% 45% 55%;
+          }
+          75% {
+            transform: translateY(50vh) scale(1.05) translateX(15vw);
+            border-radius: 50% 50% 55% 45%;
+          }
+        }
+        
+        @keyframes lavaMove1 {
+          0%, 100% {
+            transform: translateY(90vh) scale(0.9);
+            border-radius: 50%;
+          }
+          30% {
+            transform: translateY(40vh) scale(1.15) translateX(-10vw);
+            border-radius: 45% 55% 55% 45%;
+          }
+          60% {
+            transform: translateY(10vh) scale(1) translateX(10vw);
+            border-radius: 55% 45% 45% 55%;
+          }
+          80% {
+            transform: translateY(60vh) scale(0.95) translateX(-5vw);
+            border-radius: 50% 50% 50% 50%;
+          }
+        }
+        
+        @keyframes lavaMove2 {
+          0%, 100% {
+            transform: translateY(110vh) scale(1.1);
+            border-radius: 50%;
+          }
+          20% {
+            transform: translateY(70vh) scale(0.95) translateX(15vw);
+            border-radius: 55% 45% 50% 50%;
+          }
+          45% {
+            transform: translateY(30vh) scale(1.1) translateX(-10vw);
+            border-radius: 45% 55% 55% 45%;
+          }
+          70% {
+            transform: translateY(5vh) scale(0.9) translateX(5vw);
+            border-radius: 50% 50% 45% 55%;
+          }
+          90% {
+            transform: translateY(80vh) scale(1) translateX(-15vw);
+            border-radius: 50%;
+          }
+        }
+        
+        .lava-blob {
+          will-change: transform, border-radius;
+          filter: blur(40px);
+        }
+
+        .cursor-blob {
+          will-change: left, top, opacity;
+          filter: blur(25px);
+          pointer-events: none;
+        }
+      `}</style>
+    </div>
   );
 }
